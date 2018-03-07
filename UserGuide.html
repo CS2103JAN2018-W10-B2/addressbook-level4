@@ -144,6 +144,9 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
 </li>
+<li>
+<p>Some commands have command aliases which can be used in place of the command, e.g. <code>a</code> for <code>add</code>.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -158,7 +161,8 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code>
+Alias: <code>a</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -190,14 +194,16 @@ A person can have any number of tags (including 0)
 <h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+Format: <code>list</code>
+Alias: <code>l</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>
+Alias: <code>e</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -242,7 +248,8 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
 <div class="paragraph">
 <p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code>
+Alias: <code>f</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -287,7 +294,8 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 <h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+Format: <code>delete INDEX</code>
+Alias: <code>d</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -328,7 +336,8 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 <h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
-Format: <code>select INDEX</code></p>
+Format: <code>select INDEX</code>
+Alias: <code>s</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -369,7 +378,8 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 <h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
+Format: <code>history</code>
+Alias: <code>h</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -390,7 +400,8 @@ Format: <code>history</code></p>
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+Format: <code>undo</code>
+Alias: <code>u</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -435,7 +446,8 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+Format: <code>redo</code>
+Alias: <code>r</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -467,7 +479,8 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+Format: <code>clear</code>
+Alias: <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -551,7 +564,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-07 10:38:51 UTC
+Last updated 2018-03-07 10:39:34 UTC
 </div>
 </div>
 </body>
