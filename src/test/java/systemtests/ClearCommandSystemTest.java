@@ -96,6 +96,6 @@ public class ClearCommandSystemTest extends AddressBookSystemTest {
         assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);
         assertSelectedCardUnchanged();
         assertCommandBoxShowsErrorStyle();
-        assertStatusBarUnchanged();
+        assertStatusBarChangedExceptSaveLocation();
     }
 }

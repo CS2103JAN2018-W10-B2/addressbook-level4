@@ -195,6 +195,6 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
         assertApplicationDisplaysExpected(command, expectedResultMessage, expectedModel);
         assertSelectedCardUnchanged();
         assertCommandBoxShowsErrorStyle();
-        assertStatusBarUnchanged();
+        assertStatusBarChangedExceptSaveLocation();
     }
 }
