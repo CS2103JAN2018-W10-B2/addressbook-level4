@@ -38,6 +38,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label timeZone;
+    @FXML
     private FlowPane tags;
 
     public PersonCard(Person person, int displayedIndex) {
@@ -48,6 +50,7 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        timeZone.setText(person.getCustTimeZone().timeZone);
         person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
 
         if (person.isArchived()) {

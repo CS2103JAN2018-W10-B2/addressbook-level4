@@ -7,6 +7,7 @@
         <phone>85355255</phone>
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
+        <timeZone>SGT</timeZone>
         <isArchived>false</isArchived>
         <tagged>friends</tagged>
     </persons>
@@ -15,6 +16,7 @@
         <phone>98765432</phone>
         <email>johnd@example.com</email>
         <address>311, Clementi Ave 2, #02-25</address>
+        <timeZone>PST</timeZone>
         <isArchived>false</isArchived>
         <tagged>owesMoney</tagged>
         <tagged>friends</tagged>
@@ -24,6 +26,7 @@
         <phone>95352563</phone>
         <email>heinz@example.com</email>
         <address>wall street</address>
+        <timeZone>PST</timeZone>
         <isArchived>false</isArchived>
     </persons>
     <persons>
@@ -31,6 +34,7 @@
         <phone>87652533</phone>
         <email>cornelia@example.com</email>
         <address>10th street</address>
+        <timeZone>PST</timeZone>
         <isArchived>false</isArchived>
     </persons>
     <persons>
@@ -38,6 +42,7 @@
         <phone>9482224</phone>
         <email>werner@example.com</email>
         <address>michegan ave</address>
+        <timeZone>PST</timeZone>
         <isArchived>false</isArchived>
     </persons>
     <persons>
@@ -45,6 +50,7 @@
         <phone>9482427</phone>
         <email>lydia@example.com</email>
         <address>little tokyo</address>
+        <timeZone>SGT</timeZone>
         <isArchived>false</isArchived>
     </persons>
     <persons>
@@ -52,6 +58,7 @@
         <phone>9482442</phone>
         <email>anna@example.com</email>
         <address>4th street</address>
+        <timeZone>PST</timeZone>
         <isArchived>false</isArchived>
     </persons>
     <tags>friends</tags>

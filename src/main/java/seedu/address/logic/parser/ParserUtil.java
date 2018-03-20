@@ -11,6 +11,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.CustTimeZone;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -137,6 +138,30 @@ public class ParserUtil {
     public static Optional<Email> parseEmail(Optional<String> email) throws IllegalValueException {
         requireNonNull(email);
         return email.isPresent() ? Optional.of(parseEmail(email.get())) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code String timeZone} into a {@code CustTimeZone}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code timeZone} is invalid.
+     */
+    public static CustTimeZone parseCustTimeZone(String timeZone) throws IllegalValueException {
+        requireNonNull(timeZone);
+        String trimmedCustTimeZone = timeZone.trim();
+        if (!CustTimeZone.isValidTimeZone(trimmedCustTimeZone)) {
+            throw new IllegalValueException(CustTimeZone.MESSAGE_TIMEZONE_CONSTRAINTS);
+        }
+        return new CustTimeZone(trimmedCustTimeZone);
+    }
+
+    /**
+     * Parses a {@code Optional<String> timeZone} into an {@code Optional<CustTimeZone>} if {@code timeZone} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<CustTimeZone> parseCustTimeZone(Optional<String> timeZone) throws IllegalValueException {
+        requireNonNull(timeZone);
+        return timeZone.isPresent() ? Optional.of(parseCustTimeZone(timeZone.get())) : Optional.empty();
     }
 
     /**
