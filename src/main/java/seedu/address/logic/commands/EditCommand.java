@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMEZONE;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.model.Model.PREDICATE_SHOW_UNARCHIVED_PERSONS;
 
 import java.util.Collections;
@@ -24,8 +23,8 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 
 import seedu.address.model.person.Address;
-import seedu.address.model.person.CustTimeZone;
 import seedu.address.model.person.Comment;
+import seedu.address.model.person.CustTimeZone;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -220,7 +219,8 @@ public class EditCommand extends UndoableCommand {
             return Optional.ofNullable(timeZone);
         }
 
-        public void setComment(Comment comment) { this.comment = comment; }
+        public void setComment(Comment comment) {
+            this.comment = comment; }
 
         public Optional<Comment> getComment() {
             return Optional.ofNullable(comment);
