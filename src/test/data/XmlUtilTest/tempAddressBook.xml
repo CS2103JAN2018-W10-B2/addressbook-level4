@@ -9,6 +9,7 @@
         <postalCode></postalCode>
         <city></city>
         <timeZone></timeZone>
+        <comment></comment>
     </persons>
     <tags>
         <name>Friends</name>
