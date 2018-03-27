@@ -9,8 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Comment {
 
     public static final String MESSAGE_COMMENT_CONSTRAINTS =
-            "Comment can take any values, and it should not be blank. " +
-                    "If you don't have thing to note down, please put 'NIL'";
+            "Comment can take any values, and it should not be blank. "
+                    + "If you don't have thing to note down, please put 'NIL'";
 
     /*
      * The first character of the comment must not be a whitespace,
