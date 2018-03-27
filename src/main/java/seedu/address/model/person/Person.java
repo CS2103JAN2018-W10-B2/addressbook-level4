@@ -20,6 +20,7 @@ public class Person {
     private final Email email;
     private final Address address;
     private final CustTimeZone timeZone;
+    private final Comment comment;
 
     private final UniqueTagList tags;
 
@@ -28,13 +29,15 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, CustTimeZone timeZone, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, timeZone, tags);
+    public Person(Name name, Phone phone, Email email, Address address, CustTimeZone timeZone,
+                  Comment comment, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, timeZone, comment, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.timeZone = timeZone;
+        this.comment = comment;
         // protect internal tags from changes in the arg list
         this.tags = new UniqueTagList(tags);
     }
@@ -43,8 +46,8 @@ public class Person {
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address,
-                  CustTimeZone timeZone, boolean isArchived, Set<Tag> tags) {
-        this(name, phone, email, address, timeZone, tags);
+                  CustTimeZone timeZone, Comment comment, boolean isArchived, Set<Tag> tags) {
+        this(name, phone, email, address, timeZone, comment, tags);
         this.isArchived = isArchived;
     }
 
@@ -66,6 +69,8 @@ public class Person {
 
     public CustTimeZone getCustTimeZone() {
         return timeZone; }
+
+    public Comment getComment() { return comment; }
 
     public boolean isArchived() {
         return isArchived;
@@ -98,13 +103,14 @@ public class Person {
                 && otherPerson.getPhone().equals(this.getPhone())
                 && otherPerson.getEmail().equals(this.getEmail())
                 && otherPerson.getAddress().equals(this.getAddress())
-                && otherPerson.getCustTimeZone().equals(this.getCustTimeZone());
+                && otherPerson.getCustTimeZone().equals(this.getCustTimeZone())
+                && otherPerson.getComment().equals(this.getComment());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, timeZone, tags);
+        return Objects.hash(name, phone, email, address, timeZone, comment, tags);
     }
 
     @Override
@@ -119,6 +125,8 @@ public class Person {
                 .append(getAddress())
                 .append(" Time Zone: ")
                 .append(getCustTimeZone())
+                .append(" Comment: ")
+                .append(getComment())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
