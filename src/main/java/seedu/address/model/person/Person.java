@@ -70,7 +70,8 @@ public class Person {
     public CustTimeZone getCustTimeZone() {
         return timeZone; }
 
-    public Comment getComment() { return comment; }
+    public Comment getComment() {
+        return comment; }
 
     public boolean isArchived() {
         return isArchived;
