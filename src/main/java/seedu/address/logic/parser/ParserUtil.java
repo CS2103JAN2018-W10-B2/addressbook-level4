@@ -12,6 +12,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.CustTimeZone;
+import seedu.address.model.person.Comment;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -162,6 +163,30 @@ public class ParserUtil {
     public static Optional<CustTimeZone> parseCustTimeZone(Optional<String> timeZone) throws IllegalValueException {
         requireNonNull(timeZone);
         return timeZone.isPresent() ? Optional.of(parseCustTimeZone(timeZone.get())) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code String comment} into a {@code Comment}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws IllegalValueException if the given {@code comment} is invalid.
+     */
+    public static Comment parseComment(String comment) throws IllegalValueException {
+        requireNonNull(comment);
+        String trimmedComment = comment.trim();
+        if (!Comment.isValidComment(trimmedComment)) {
+            throw new IllegalValueException(Comment.MESSAGE_COMMENT_CONSTRAINTS);
+        }
+        return new Comment(trimmedComment);
+    }
+
+    /**
+     * Parses a {@code Optional<String> comment} into an {@code Optional<Comment>} if {@code comment} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Comment> parseComment(Optional<String> comment) throws IllegalValueException {
+        requireNonNull(comment);
+        return comment.isPresent() ? Optional.of(parseComment(comment.get())) : Optional.empty();
     }
 
     /**
