@@ -64,7 +64,7 @@ Format: `help`
 === Adding a person: `add`
 
 Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [ti/TIMEZONE] [t/TAG]...`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS tz/TIMEZONE c/COMMENT [t/TAG]...`
 Alias: `a`
 
 [TIP]
@@ -73,8 +73,8 @@ Timezone is optional
 
 Examples:
 
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 ti/SGT`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 tz/SGT c\He can speak French`
+* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 tz\PST c\She can speak French t/criminal`
 
 === Listing all persons excluding archived : `list`
 
@@ -124,7 +124,7 @@ Alias: `uar`
 === Editing a person : `edit`
 
 Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ti/TIMEZONE] [t/TAG]...`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [tz/TIMEZONE] [c/COMMENT] [t/TAG]...`
 Alias: `e`
 
 ****
@@ -302,8 +302,8 @@ _{explain how the user can enable/disable data encryption}_
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [ti/TIMEZONE] [t/TAG]...` +
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 ti/SGT t/friend t/colleague`
+* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS tz/TIMEZONE c/COMMENT [t/TAG]...` +
+e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 tz/SGT c/He can speak French t/friend t/colleague`
 
 * *Clear* : `clear`
 * *Delete* : `delete INDEX` +
