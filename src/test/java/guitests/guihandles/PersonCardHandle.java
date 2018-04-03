@@ -81,4 +81,5 @@ public class PersonCardHandle extends NodeHandle<Node> {
                 .map(Label::getText)
                 .collect(Collectors.toList());
     }
+
 }

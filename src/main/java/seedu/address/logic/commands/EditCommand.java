@@ -268,4 +268,5 @@ public class EditCommand extends UndoableCommand {
                     && getTags().equals(e.getTags());
         }
     }
+
 }
