@@ -91,6 +91,7 @@ public interface Model {
      */
     void updateFilteredAppointmentList(Predicate<Appointment> predicate);
 
+    //@@author XavierMaYuqian
     /** Removes the given {@code tag} from all {@code Person}s. */
     void deleteTag(Tag t);
 
