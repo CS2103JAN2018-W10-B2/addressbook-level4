@@ -7,6 +7,7 @@
         <email isPrivate="false">hans@exam!32ple</email>
         <address isPrivate="false">4th street</address>
         <timeZone isPrivate="false">PST</timeZone>
+        <comment isPrivate="false">He likes music</comment>
         <isArchived>false</isArchived>
     </persons>
 </addressbook>
