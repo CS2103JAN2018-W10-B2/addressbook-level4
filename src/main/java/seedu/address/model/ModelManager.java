@@ -131,6 +131,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
     //@@author
 
+    //@@author XavierMaYuqian
     @Override
     public void deleteTag(Tag t) {
         addressBook.removeTag(t);

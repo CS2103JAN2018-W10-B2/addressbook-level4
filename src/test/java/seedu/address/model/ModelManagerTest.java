@@ -35,6 +35,7 @@ public class ModelManagerTest {
         modelManager.getFilteredPersonList().remove(0);
     }
 
+    //@@author XavierMaYuqian
     @Test
     public void deleteTagNonExistentTagModelUnchanged() throws Exception {
         AddressBook addressBook = new AddressBookBuilder().withPerson(AMY).withPerson(BOB).build();
@@ -46,6 +47,7 @@ public class ModelManagerTest {
         assertEquals(new ModelManager(addressBook, userPrefs), modelManager);
     }
 
+    //@@author XavierMaYuqian
     @Test
     public void deleteTagTagUsedByMultiplePersonsTagRemoved() throws Exception {
         AddressBook addressBook = new AddressBookBuilder().withPerson(AMY).withPerson(BOB).build();
