@@ -24,6 +24,7 @@ public class ClearCommandSystemTest extends AddressBookSystemTest {
         UnlockCommand testUnlockCommand = new UnlockCommand(password);
         testUnlockCommand.setData(defaultModel, new CommandHistory(), new UndoRedoStack());
         testUnlockCommand.execute();
+        showAllPersons();
 
         /* Case: clear non-empty address book, command with leading spaces and trailing alphanumeric characters and
          * spaces -> cleared
