@@ -31,6 +31,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniquePersonList persons;
     private final UniqueTagList tags;
     private final UniqueAppointmentList appointments;
+    private String password;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -43,6 +44,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         tags = new UniqueTagList();
         appointments = new UniqueAppointmentList();
+        password = "123456";
     }
 
     public AddressBook() {}
@@ -78,6 +80,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         List<Person> syncedPersonList = newData.getPersonList().stream()
                 .map(this::syncWithMasterTagList)
                 .collect(Collectors.toList());
+        this.password = newData.getPassword();
 
         try {
             setPersons(syncedPersonList);
@@ -192,7 +195,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         personTags.forEach(tag -> correctTagReferences.add(masterTagObjects.get(tag)));
         return new Person(
                 person.getName(), person.getPhone(), person.getEmail(),
-                person.getAddress(), person.getCustTimeZone(), person.isArchived(), correctTagReferences);
+                person.getAddress(), person.getCustTimeZone(), person.getComment(),
+                person.isArchived(), correctTagReferences);
     }
 
     /**
@@ -288,7 +292,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         Person newPerson = new Person(person.getName(), person.getPhone(), person.getEmail(),
-                                      person.getAddress(), person.getCustTimeZone(), newTags);
+                person.getAddress(), person.getCustTimeZone(), person.getComment(), newTags);
 
         try {
             updatePerson(person, newPerson);
@@ -297,6 +301,19 @@ public class AddressBook implements ReadOnlyAddressBook {
                      + "See Person#equals(Object).");
         }
     }
+
+
+    //@@author XavierMaYuqian
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    //@@author XavierMaYuqian
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
     //@@author ongkuanyang
 

@@ -11,9 +11,12 @@ import org.junit.Test;
 
 import guitests.GuiRobot;
 import guitests.guihandles.HelpWindowHandle;
+import seedu.address.logic.CommandHistory;
+import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.UnlockCommand;
 import seedu.address.ui.BrowserPanel;
 import seedu.address.ui.StatusBarFooter;
 
@@ -30,6 +33,12 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
 
     @Test
     public void openHelpWindow() {
+        String password = getModel().getPassword();
+        UnlockCommand testUnlockCommand = new UnlockCommand(password);
+        testUnlockCommand.setData(getModel(), new CommandHistory(), new UndoRedoStack());
+        testUnlockCommand.execute();
+        showAllPersons();
+
         //use accelerator
         getCommandBox().click();
         getMainMenu().openHelpWindowUsingAccelerator();

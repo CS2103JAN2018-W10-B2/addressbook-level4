@@ -21,12 +21,15 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListAllCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.LockCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.SetPasswordCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.SwitchThemeCommand;
 import seedu.address.logic.commands.UnarchiveCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UnlockCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -115,6 +118,15 @@ public class AddressBookParser {
 
         case RedoCommand.COMMAND_WORD: case RedoCommand.COMMAND_ALIAS:
             return new RedoCommand();
+
+        case LockCommand.COMMAND_WORD: case LockCommand.COMMAND_ALIAS:
+            return new LockCommand();
+
+        case UnlockCommand.COMMAND_WORD: case UnlockCommand.COMMAND_ALIAS:
+            return new UnlockCommandParser().parse(arguments);
+
+        case SetPasswordCommand.COMMAND_WORD: case SetPasswordCommand.COMMAND_ALIAS:
+            return new SetPasswordCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

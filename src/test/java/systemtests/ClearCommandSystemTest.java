@@ -6,9 +6,12 @@ import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_MEIER;
 import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.CommandHistory;
+import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UnlockCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 
@@ -17,6 +20,11 @@ public class ClearCommandSystemTest extends AddressBookSystemTest {
     @Test
     public void clear() {
         final Model defaultModel = getModel();
+        String password = defaultModel.getPassword();
+        UnlockCommand testUnlockCommand = new UnlockCommand(password);
+        testUnlockCommand.setData(defaultModel, new CommandHistory(), new UndoRedoStack());
+        testUnlockCommand.execute();
+        showAllPersons();
 
         /* Case: clear non-empty address book, command with leading spaces and trailing alphanumeric characters and
          * spaces -> cleared

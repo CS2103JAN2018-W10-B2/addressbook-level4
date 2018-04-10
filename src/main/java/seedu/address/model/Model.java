@@ -96,4 +96,12 @@ public interface Model {
     /** Removes the given {@code tag} from all {@code Person}s. */
     void deleteTag(Tag t);
 
+    //@@author XavierMaYuqian
+    /** Adds the given password */
+    void setPassword(String e);
+
+    //@@author XavierMaYuqian
+    /** Gets the password */
+    String getPassword();
+
 }

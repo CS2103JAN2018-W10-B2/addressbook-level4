@@ -14,10 +14,13 @@ import java.util.List;
 import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.CommandHistory;
+import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UnlockCommand;
 import seedu.address.model.Model;
 import seedu.address.model.tag.Tag;
 
@@ -30,6 +33,11 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
          */
         String command = "   " + FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_MEIER + "   ";
         Model expectedModel = getModel();
+        String password = expectedModel.getPassword();
+        UnlockCommand testUnlockCommand = new UnlockCommand(password);
+        testUnlockCommand.setData(expectedModel, new CommandHistory(), new UndoRedoStack());
+        testUnlockCommand.execute();
+        showAllPersons();
         ModelHelper.setFilteredList(expectedModel, BENSON, DANIEL); // first names of Benson and Daniel are "Meier"
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();

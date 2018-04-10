@@ -121,7 +121,6 @@ public class AddressBookTest {
         private final ObservableList<Tag> tags = FXCollections.observableArrayList();
         private final ObservableList<Appointment> appointments = FXCollections.observableArrayList();
 
-
         AddressBookStub(Collection<Person> persons, Collection<? extends Tag> tags,
                         Collection<Appointment> appointments) {
             this.persons.setAll(persons);
@@ -142,6 +141,11 @@ public class AddressBookTest {
         @Override
         public ObservableList<Tag> getTagList() {
             return tags;
+        }
+
+        @Override
+        public String getPassword() {
+            return null;
         }
     }
 

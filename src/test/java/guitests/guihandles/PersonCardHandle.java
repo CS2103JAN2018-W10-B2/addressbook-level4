@@ -17,6 +17,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private static final String PHONE_FIELD_ID = "#phone";
     private static final String EMAIL_FIELD_ID = "#email";
     private static final String TIMEZONE_FIELD_ID = "#timeZone";
+    private static final String COMMENT_FIELD_ID = "#comment";
     private static final String TAGS_FIELD_ID = "#tags";
 
     private final Label idLabel;
@@ -25,6 +26,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private final Label phoneLabel;
     private final Label emailLabel;
     private final Label timeZoneLabel;
+    private final Label commentLabel;
     private final List<Label> tagLabels;
 
     public PersonCardHandle(Node cardNode) {
@@ -36,6 +38,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
         this.phoneLabel = getChildNode(PHONE_FIELD_ID);
         this.emailLabel = getChildNode(EMAIL_FIELD_ID);
         this.timeZoneLabel = getChildNode(TIMEZONE_FIELD_ID);
+        this.commentLabel = getChildNode(COMMENT_FIELD_ID);
 
         Region tagsContainer = getChildNode(TAGS_FIELD_ID);
         this.tagLabels = tagsContainer
@@ -68,10 +71,16 @@ public class PersonCardHandle extends NodeHandle<Node> {
     public String getCustTimeZone() {
         return timeZoneLabel.getText(); }
 
+    //@@author XavierMaYuqian
+    public String getComment() {
+        return commentLabel.getText();
+    }
+
     public List<String> getTags() {
         return tagLabels
                 .stream()
                 .map(Label::getText)
                 .collect(Collectors.toList());
     }
+
 }
