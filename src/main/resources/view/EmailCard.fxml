@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- @@author glorialaw -->
+
+<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <GridPane prefHeight="104.0" prefWidth="343.0" HBox.hgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
+        </columnConstraints>
+        <VBox alignment="CENTER_LEFT" minHeight="103.0" prefHeight="104.0" prefWidth="229.0" GridPane.columnIndex="0">
+            <padding>
+                <Insets bottom="5" left="15" right="5" top="5" />
+            </padding>
+            <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="323.0" spacing="5">
+                <Label fx:id="email" styleClass="cell_big_label" text="\\$sender">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            </HBox>
+            <Label fx:id="subject" prefHeight="17.0" prefWidth="324.0" styleClass="cell_small_label" text="\$subject">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Label>
+         <Label fx:id="preview" prefHeight="51.0" prefWidth="321.0" text="\$preview" wrapText="true" />
+        </VBox>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+</HBox>

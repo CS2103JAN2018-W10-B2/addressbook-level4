@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * Represents an appointment's time in the address book.
@@ -20,6 +21,8 @@ public class AppointmentTime {
     public static final String MESSAGE_TIME_CONSTRAINTS =
             "Year, month, day, hour and minute should constitute a valid date and time. "
             + "Timezone should be of the form '{area}/{city}', such as 'Europe/Paris' or 'America/New_York'";
+
+    public static final String STRING_FORMAT = "d MMM uuuu HH:mm VV";
 
     public final ZonedDateTime time;
 
@@ -40,6 +43,17 @@ public class AppointmentTime {
     }
 
     /**
+     * Constructs an {@code AppointmentTime}
+     *
+     * @param string string formatted as per {@code STRING_FORMAT}
+     */
+    public AppointmentTime(String string) {
+        requireNonNull(string);
+        checkArgument(isValidTime(string), MESSAGE_TIME_CONSTRAINTS);
+        this.time = ZonedDateTime.parse(string, DateTimeFormatter.ofPattern(STRING_FORMAT));
+    }
+
+    /**
      * Returns true if a parameters give a valid time and timezone.
      */
     public static boolean isValidTime(int year, int month, int dayOfMonth, int hour, int minute, String timezone) {
@@ -52,10 +66,22 @@ public class AppointmentTime {
         return getAvailableZoneIds().contains(timezone);
     }
 
+    /**
+     * Returns true if string gives a valid time and timezone as per {@code STRING_FORMAT}
+     */
+    public static boolean isValidTime(String string) {
+        try {
+            ZonedDateTime.parse(string, DateTimeFormatter.ofPattern(STRING_FORMAT));
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+
+        return true;
+    }
 
     @Override
     public String toString() {
-        return time.format(DateTimeFormatter.ofPattern("d MMM uuuu HH:mm VV"));
+        return time.format(DateTimeFormatter.ofPattern(STRING_FORMAT));
     }
 
     @Override

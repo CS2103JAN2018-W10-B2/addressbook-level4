@@ -1,4 +1,6 @@
-//@@author ongkuanyang
+# ongkuanyang
+###### /java/seedu/address/logic/commands/ArchiveCommandTest.java
+``` java
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
@@ -200,3 +202,4 @@ public class ArchiveCommandTest {
         assertTrue(model.getFilteredPersonList().isEmpty());
     }
 }
+```

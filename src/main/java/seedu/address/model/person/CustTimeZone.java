@@ -3,9 +3,11 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+//@@author glorialaw
 /**
  * Represents a person's timezone in the address book.
  */
+
 public class CustTimeZone {
 
     public static final String MESSAGE_TIMEZONE_CONSTRAINTS =

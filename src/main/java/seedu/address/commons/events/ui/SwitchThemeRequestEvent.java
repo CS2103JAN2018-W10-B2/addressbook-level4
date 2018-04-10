@@ -1,3 +1,4 @@
+//@@author ongkuanyang
 package seedu.address.commons.events.ui;
 
 import seedu.address.commons.events.BaseEvent;
@@ -13,3 +14,4 @@ public class SwitchThemeRequestEvent extends BaseEvent {
     }
 
 }
+//@@author

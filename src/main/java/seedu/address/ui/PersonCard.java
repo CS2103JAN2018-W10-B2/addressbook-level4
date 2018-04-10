@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -58,6 +60,20 @@ public class PersonCard extends UiPart<Region> {
 
         if (person.isArchived()) {
             name.getStyleClass().add(ARCHIVED_STYLE);
+        }
+    }
+
+    //@@author glorialaw
+    /**
+     * opens email sender when email is pushed
+     * @throws IOException
+     */
+    @FXML
+    private void writeEmail() throws IOException {
+        try {
+            ComposeEmailWindow cew = new ComposeEmailWindow(this.email.getText());
+        } catch (IOException e) {
+            System.out.println("IOException");
         }
     }
 
