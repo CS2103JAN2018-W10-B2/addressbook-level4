@@ -169,7 +169,20 @@ public class AddCommandTest {
         public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
             fail("This method should not be called.");
         }
+        
+        //@@author XavierMaYuqian
+        @Override
+        public String getPassword() {
+            fail("This method should not be called.");
+            return null;
+        }
 
+        //@@author XavierMaYuqian
+        @Override
+        public void setPassword(String e) {
+            fail("This method should not be called.");
+        }
+        
         //@@author XavierMaYuqian
         @Override
         public void deleteTag(Tag tag) {
