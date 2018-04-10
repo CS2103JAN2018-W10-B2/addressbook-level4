@@ -27,7 +27,7 @@ public class UnlockCommand extends Command {
     @Override
     public CommandResult execute() {
         if (!LogicManager.isLocked()) {
-            return new CommandResult("Employees Tracker is already unlocked!");
+            return new CommandResult("SellIT is already unlocked!");
         }
 
         if (this.password.compareTo(LogicManager.getPassword()) == 0) {
