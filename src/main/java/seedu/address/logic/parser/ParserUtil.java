@@ -277,6 +277,7 @@ public class ParserUtil {
         return timeZone.isPresent() ? Optional.of(parseCustTimeZone(timeZone.get())) : Optional.empty();
     }
 
+    //@@author XavierMaYuqian
     /**
      * Parses a {@code String comment} into a {@code Comment}.
      * Leading and trailing whitespaces will be trimmed.
@@ -292,6 +293,7 @@ public class ParserUtil {
         return new Comment(trimmedComment);
     }
 
+    //@@author XavierMaYuqian
     /**
      * Parses a {@code Optional<String> comment} into an {@code Optional<Comment>} if {@code comment} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
