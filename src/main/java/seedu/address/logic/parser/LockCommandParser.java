@@ -4,6 +4,9 @@ import seedu.address.logic.commands.LockCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 //@@author XavierMaYuqian
+/**
+ * LockCommandParser
+ */
 public class LockCommandParser implements Parser<LockCommand> {
 
     /**
