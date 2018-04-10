@@ -142,6 +142,7 @@ public class ModelManager extends ComponentManager implements Model {
         raise(new PasswordChangedEvent(p));
     }
 
+    //@@author XavierMaYuqian
     @Override
     public void setPassword(String password) {
         addressBook.setPassword(password);
@@ -149,6 +150,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicatePasswordChangedEvent(password);
     }
 
+    //@@author XavierMaYuqian
     public String getPassword() {
         return addressBook.getPassword();
     }
