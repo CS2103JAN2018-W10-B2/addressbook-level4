@@ -21,9 +21,9 @@ import seedu.address.model.person.Person;
 public class LogicManager extends ComponentManager implements Logic {
     private static boolean isLocked;
     private static String password;
-    
+
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
-    
+
     private final Model model;
     private final CommandHistory history;
     private final AddressBookParser addressBookParser;
