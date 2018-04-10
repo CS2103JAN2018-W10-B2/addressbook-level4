@@ -67,6 +67,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         UnlockCommand testUnlockCommand = new UnlockCommand(password);
         testUnlockCommand.setData(model, new CommandHistory(), new UndoRedoStack());
         testUnlockCommand.execute();
+        showAllPersons();
 
         /* ----------------- Performing edit operation while an unfiltered list is being shown ---------------------- */
 
