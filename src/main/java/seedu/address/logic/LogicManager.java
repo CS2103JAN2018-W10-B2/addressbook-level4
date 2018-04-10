@@ -25,8 +25,8 @@ public class LogicManager extends ComponentManager implements Logic {
     private final CommandHistory history;
     private final AddressBookParser addressBookParser;
     private final UndoRedoStack undoRedoStack;
-    public static String password;
     public static boolean isLocked;
+    public static String password;
 
     public LogicManager(Model model) {
         this.model = model;
