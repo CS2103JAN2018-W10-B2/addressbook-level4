@@ -73,6 +73,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
         UnlockCommand testUnlockCommand = new UnlockCommand(password);
         testUnlockCommand.setData(model, new CommandHistory(), new UndoRedoStack());
         testUnlockCommand.execute();
+        showAllPersons();
 
         /* ------------------------ Perform add operations on the shown unfiltered list ----------------------------- */
 
