@@ -45,9 +45,12 @@ import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.CommandHistory;
+import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UnlockCommand;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Comment;
@@ -66,6 +69,10 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
     @Test
     public void add() throws Exception {
         Model model = getModel();
+        String password = model.getPassword();
+        UnlockCommand testUnlockCommand = new UnlockCommand(password);
+        testUnlockCommand.setData(model, new CommandHistory(), new UndoRedoStack());
+        testUnlockCommand.execute();
 
         /* ------------------------ Perform add operations on the shown unfiltered list ----------------------------- */
 
