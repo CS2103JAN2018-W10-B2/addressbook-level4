@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.person.HideAllPerson;
 
-
+//@@author XavierMaYuqian
 /**
  * Locks the app with a password
  * */
