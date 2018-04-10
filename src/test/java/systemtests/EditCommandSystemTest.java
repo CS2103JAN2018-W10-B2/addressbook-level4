@@ -40,9 +40,12 @@ import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.CommandHistory;
+import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UnlockCommand;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -60,6 +63,10 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
     @Test
     public void edit() throws Exception {
         Model model = getModel();
+        String password = model.getPassword();
+        UnlockCommand testUnlockCommand = new UnlockCommand(password);
+        testUnlockCommand.setData(model, new CommandHistory(), new UndoRedoStack());
+        testUnlockCommand.execute();
 
         /* ----------------- Performing edit operation while an unfiltered list is being shown ---------------------- */
 
