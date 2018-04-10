@@ -219,9 +219,11 @@ public class EditCommand extends UndoableCommand {
             return Optional.ofNullable(timeZone);
         }
 
+        //@@author XavierMaYuqian
         public void setComment(Comment comment) {
             this.comment = comment; }
 
+        //@@author XavierMaYuqian
         public Optional<Comment> getComment() {
             return Optional.ofNullable(comment);
         }
