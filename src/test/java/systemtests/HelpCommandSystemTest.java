@@ -38,7 +38,7 @@ public class HelpCommandSystemTest extends AddressBookSystemTest {
         testUnlockCommand.setData(getModel(), new CommandHistory(), new UndoRedoStack());
         testUnlockCommand.execute();
         showAllPersons();
-        
+
         //use accelerator
         getCommandBox().click();
         getMainMenu().openHelpWindowUsingAccelerator();
