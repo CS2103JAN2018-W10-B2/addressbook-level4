@@ -131,6 +131,7 @@ public class XmlAdaptedPersonTest {
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
+    //@@author XavierMaYuqian
     @Test
     public void toModelType_invalidComment_throwsIllegalValueException() {
         XmlAdaptedPerson person =
