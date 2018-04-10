@@ -31,6 +31,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniquePersonList persons;
     private final UniqueTagList tags;
     private final UniqueAppointmentList appointments;
+    private String password;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -43,6 +44,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         tags = new UniqueTagList();
         appointments = new UniqueAppointmentList();
+        password = "123456";
     }
 
     public AddressBook() {}
@@ -78,6 +80,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         List<Person> syncedPersonList = newData.getPersonList().stream()
                 .map(this::syncWithMasterTagList)
                 .collect(Collectors.toList());
+        this.password = newData.getPassword();
 
         try {
             setPersons(syncedPersonList);
@@ -295,6 +298,17 @@ public class AddressBook implements ReadOnlyAddressBook {
             throw new AssertionError("Modifying a person's tags only should not result in a duplicate. "
                      + "See Person#equals(Object).");
         }
+    }
+
+    //@@author XavierMaYuqian
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    //@@author XavierMaYuqian
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     //// util methods

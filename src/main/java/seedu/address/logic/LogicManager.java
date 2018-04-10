@@ -7,6 +7,7 @@ import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.UnlockCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -24,22 +25,53 @@ public class LogicManager extends ComponentManager implements Logic {
     private final CommandHistory history;
     private final AddressBookParser addressBookParser;
     private final UndoRedoStack undoRedoStack;
+    public static String password;
+    public static boolean isLocked;
 
     public LogicManager(Model model) {
         this.model = model;
         history = new CommandHistory();
         addressBookParser = new AddressBookParser();
         undoRedoStack = new UndoRedoStack();
+        isLocked = true;
+        password = model.getPassword();
     }
 
+    public LogicManager(Model model, boolean initialLock) {
+        this.model = model;
+        history = new CommandHistory();
+        addressBookParser = new AddressBookParser();
+        undoRedoStack = new UndoRedoStack();
+        isLocked = initialLock;
+        password = model.getPassword();
+    }
+
+    //@@author XavierMaYuqian
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
         try {
-            Command command = addressBookParser.parseCommand(commandText);
-            command.setData(model, history, undoRedoStack);
-            CommandResult result = command.execute();
-            undoRedoStack.push(command);
+            Command command;
+            CommandResult result = new CommandResult("");
+            if (isLocked) {
+                command = addressBookParser.parseCommand(commandText);
+                if (command instanceof UnlockCommand) {
+                    UnlockCommand unknockCommand = (UnlockCommand) command;
+                    if (unknockCommand.getPassword().compareTo(password) == 0) {
+                        isLocked = false;
+                        result = new CommandResult(UnlockCommand.MESSAGE_SUCCESS);
+                    } else {
+                        result = new CommandResult("incorrect unlock password!");
+                    }
+                } else {
+                    result = new CommandResult("Addressbook has been locked, please unlock it first!");
+                }
+            } else {
+                command = addressBookParser.parseCommand(commandText);
+                command.setData(model, history, undoRedoStack);
+                result = command.execute();
+                undoRedoStack.push(command);
+            }
             return result;
         } finally {
             history.add(commandText);
@@ -60,4 +92,23 @@ public class LogicManager extends ComponentManager implements Logic {
     public ListElementPointer getHistorySnapshot() {
         return new ListElementPointer(history.getHistory());
     }
+
+    //@@author XavierMaYuqian
+    public static String getPassword() {
+        return password;
+    }
+
+    //@@author XavierMaYuqian
+    public static void setPassword(String psw) {
+        password = psw;
+    }
+
+    //@@author XavierMaYuqian
+    public static void unLock() { isLocked = false; }
+
+    //@@author XavierMaYuqian
+    public static void lock() { isLocked = true; }
+
+    //@@author XavierMaYuqian
+    public static boolean isLocked() { return isLocked; }
 }
