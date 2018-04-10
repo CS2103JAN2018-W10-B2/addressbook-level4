@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 /**
  * HideAllPerson
  */
-public class HideAllPerson implements Predicate<Person>{
+public class HideAllPerson implements Predicate<Person> {
 
     public HideAllPerson() {}
 
