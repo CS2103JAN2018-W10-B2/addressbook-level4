@@ -19,14 +19,15 @@ import seedu.address.model.person.Person;
  * The main LogicManager of the app.
  */
 public class LogicManager extends ComponentManager implements Logic {
+    private static boolean isLocked;
+    private static String password;
+    
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
-
+    
     private final Model model;
     private final CommandHistory history;
     private final AddressBookParser addressBookParser;
     private final UndoRedoStack undoRedoStack;
-    private static boolean isLocked;
-    private static String password;
 
     public LogicManager(Model model) {
         this.model = model;
@@ -104,11 +105,17 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     //@@author XavierMaYuqian
-    public static void unLock() { isLocked = false; }
+    public static void unLock() {
+        isLocked = false;
+    }
 
     //@@author XavierMaYuqian
-    public static void lock() { isLocked = true; }
+    public static void lock() {
+        isLocked = true;
+    }
 
     //@@author XavierMaYuqian
-    public static boolean isLocked() { return isLocked; }
+    public static boolean isLocked() {
+        return isLocked;
+    }
 }
