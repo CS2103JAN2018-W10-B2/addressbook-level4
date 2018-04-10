@@ -71,6 +71,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     public String getCustTimeZone() {
         return timeZoneLabel.getText(); }
 
+    //@@author XavierMaYuqian
     public String getComment() {
         return commentLabel.getText();
     }
