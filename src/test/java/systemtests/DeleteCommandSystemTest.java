@@ -39,6 +39,7 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
         UnlockCommand testUnlockCommand = new UnlockCommand(password);
         testUnlockCommand.setData(expectedModel, new CommandHistory(), new UndoRedoStack());
         testUnlockCommand.execute();
+        showAllPersons();
         String command = "     " + DeleteCommand.COMMAND_WORD + "      " + INDEX_FIRST_PERSON.getOneBased() + "       ";
         Person deletedPerson = removePerson(expectedModel, INDEX_FIRST_PERSON);
         String expectedResultMessage = String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedPerson);
