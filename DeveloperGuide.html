@@ -52,10 +52,11 @@
 <li><a href="#addcomment-feature">3.6. AddComment feature</a></li>
 <li><a href="#archive-feature">3.7. Archive feature</a></li>
 <li><a href="#timezone-feature">3.8. TimeZone feature</a></li>
-<li><a href="#undo-redo-feature">3.9. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.10. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.11. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.12. Configuration</a></li>
+<li><a href="#email-feature">3.9. Email feature</a></li>
+<li><a href="#undo-redo-feature">3.10. Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">3.11. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.12. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.13. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -911,9 +912,55 @@ The login/logout command feature requires the sales person to enter password whe
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.9. Undo/Redo feature</a></h3>
+<h3 id="email-feature"><a class="link" href="#email-feature">3.9. Email feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.9.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The email feature allows the user to send emails in the app by typing their message in an email compose pop up box.
+The inbox feature allows the user to see a preview of the plain text emails that they have received right when they open the app. To view the message, the user clicks the message and an popup will appear with the full message.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.9.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-the-ui-of-the-inbox-panel"><a class="link" href="#aspect-the-ui-of-the-inbox-panel">Aspect: The UI of the inbox panel</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Display the inbox panel so that it can be seen right when the user opens Sell IT.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Convenient and saves time which are key aspects as the user is a busy sales person.</p>
+</li>
+<li>
+<p>Cons: May clutter up the app&#8217;s start page.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Inbox can be displayed on a separate panel which can be accessed by the user through a mail icon button.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less clutter</p>
+</li>
+<li>
+<p>Cons: May be less convenient for the sales person to always need to click the button to view their inbox.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.10. Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.10.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -1066,7 +1113,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.9.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.10.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
@@ -1203,20 +1250,20 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.10. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.11. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.11. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.12. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.12, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.13, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1247,7 +1294,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.12. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.13. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2282,7 +2329,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major</strong>: A chat bot which the sales person can ask simple questions regarding his schedule and clients.</p>
+<p><strong>Major</strong>: An email feature comprised of an email inbox panel and the ability to compose, reply and forward emails.</p>
 </li>
 <li>
 <p><strong>Minor</strong>: A time zone feature which allows the sales person to add the timezone details of their clients.</p>
@@ -2351,6 +2398,18 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">schedule meetings with my clients</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">remember when I am supposed to meet them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conveniently send emails to clients</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">increase efficiency and save time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conveniently see my email inbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know when my clients are contacting me</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2518,6 +2577,45 @@ Use case resumes at step 2.</p>
 </li>
 <li>
 <p>4a. The user does not select any contacts.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-send-email-to-client" class="discrete">Use case: Send email to client.</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sell IT shows the user a list of clients.</p>
+</li>
+<li>
+<p>User clicks the email of the client they want to contact.</p>
+</li>
+<li>
+<p>Sell IT displays the email compose pop up box.</p>
+</li>
+<li>
+<p>User types their email contents and pushes the send button.</p>
+</li>
+<li>
+<p>Sell IT attempts to send their email and displays a success or failure message.</p>
+</li>
+<li>
+<p>User closes the pop up by pressing the ESCAPE key or the return button.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. The user clicks cancel.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2735,7 +2833,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 20:21:00 UTC
+Last updated 2018-04-11 01:39:44 UTC
 </div>
 </div>
 </body>
