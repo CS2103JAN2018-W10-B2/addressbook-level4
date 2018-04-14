@@ -8,6 +8,7 @@
         <email>alice@example.com</email>
         <address>123, Jurong West Ave 6, #08-111</address>
         <timeZone>SGT</timeZone>
+        <comment>She likes flower</comment>
         <isArchived>false</isArchived>
         <tagged>friends</tagged>
     </persons>
@@ -17,6 +18,7 @@
         <email>johnd@example.com</email>
         <address>311, Clementi Ave 2, #02-25</address>
         <timeZone>PST</timeZone>
+        <comment>He likes football</comment>
         <isArchived>false</isArchived>
         <tagged>owesMoney</tagged>
         <tagged>friends</tagged>
@@ -27,6 +29,7 @@
         <email>heinz@example.com</email>
         <address>wall street</address>
         <timeZone>PST</timeZone>
+        <comment>She likes kids</comment>
         <isArchived>false</isArchived>
     </persons>
     <persons>
@@ -35,6 +38,7 @@
         <email>cornelia@example.com</email>
         <address>10th street</address>
         <timeZone>PST</timeZone>
+        <comment>He likes basketball</comment>
         <isArchived>false</isArchived>
     </persons>
     <persons>
@@ -43,6 +47,7 @@
         <email>werner@example.com</email>
         <address>michegan ave</address>
         <timeZone>PST</timeZone>
+        <comment>She likes reading</comment>
         <isArchived>false</isArchived>
     </persons>
     <persons>
@@ -51,6 +56,7 @@
         <email>lydia@example.com</email>
         <address>little tokyo</address>
         <timeZone>SGT</timeZone>
+        <comment>She likes cooking</comment>
         <isArchived>false</isArchived>
     </persons>
     <persons>
@@ -59,6 +65,7 @@
         <email>anna@example.com</email>
         <address>4th street</address>
         <timeZone>PST</timeZone>
+        <comment>She likes red color</comment>
         <isArchived>false</isArchived>
     </persons>
     <tags>friends</tags>

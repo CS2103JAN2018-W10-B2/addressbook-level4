@@ -33,6 +33,7 @@
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" onMousePressed="#writeEmail" styleClass="cell_small_label" text="\$email" />
       <Label fx:id="timeZone" styleClass="cell_small_label" text="\$timeZone" />
+      <Label fx:id="comment" styleClass="cell_small_label" text="\$comment" />
     </VBox>
       <rowConstraints>
          <RowConstraints />
