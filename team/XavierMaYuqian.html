@@ -25,7 +25,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>SellIT is a desktop address book application used for businessman doing his business all around the world. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Sell IT is for salesmen who prefer to use a desktop app for managing their clients. More importantly, Sell IT is optimized for those who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Sell IT can get your contact management tasks done faster than traditional GUI apps. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -73,16 +73,6 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Documentation:</p>
 <div class="ulist">
 <ul>
@@ -125,6 +115,92 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="login-code-unlock-code"><a class="link" href="#login-code-unlock-code">Login : <code>unlock</code></a></h3>
+<div class="paragraph">
+<p>You can unlock the APP while it is locked. The initial password is 123456.+
+Format: <code>unlock [PASSWORD]</code>
+alias: <code>ulk</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>unlock 123456</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logout-code-lock-code"><a class="link" href="#logout-code-lock-code">Logout : <code>lock</code></a></h3>
+<div class="paragraph">
+<p>You can logout after using the APP. The initial password is 123456.+
+Format: <code>lock</code>
+alias: <code>lk</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reset-password-code-setpassword-code"><a class="link" href="#reset-password-code-setpassword-code">Reset password : <code>setPassword</code></a></h3>
+<div class="paragraph">
+<p>You may change the password of login. The initial password is 123456.+
+Format: <code>setPassword [OLD_PASSWORD] [NEW_PASSWORD]</code>
+alias: <code>sp</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setPassword 123456 123</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-all-persons-code-sort-code"><a class="link" href="#sorting-all-persons-code-sort-code">Sorting all persons : <code>sort</code></a></h3>
+<div class="paragraph">
+<p>Sorts all persons in the address book based on alphabetical order of their full names.<br>
+Format: <code>sort</code>
+Alias: <code>so</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-tag-code-deletetag-code"><a class="link" href="#deleting-a-tag-code-deletetag-code">Deleting a tag : <code>deletetag</code></a></h3>
+<div class="paragraph">
+<p>Deletes the specified tag from everyone in the address book.<br>
+Format: <code>deletetag TAG_NAME</code>
+Alias: <code>dt</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the tag with the specified <code>TAG_NAME</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p>*<code>delete family</code><br>
+Deletes the family tag for every person in the address book.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export-all-persons-code-export-code"><a class="link" href="#export-all-persons-code-export-code">Export all persons : <code>export</code></a></h3>
+<div class="paragraph">
+<p>Exports all persons in the address book based to a csv file.<br>
+Format: <code>export</code>
+Alias: <code>ep</code></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2522,7 +2598,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 16:01:08 UTC
+Last updated 2018-04-14 16:03:41 UTC
 </div>
 </div>
 </body>
