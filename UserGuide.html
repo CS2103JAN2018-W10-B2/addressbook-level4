@@ -48,18 +48,17 @@
 <li><a href="#deleting-a-person-code-delete-code">3.18. Deleting a person : <code>delete</code></a></li>
 <li><a href="#deleting-an-appointment-code-deleteappointment-code-code-since-v1-4-code">3.19. Deleting an appointment : <code>deleteappointment</code> <code>Since v1.4</code></a></li>
 <li><a href="#deleting-a-tag-code-deletetag-code">3.20. Deleting a tag : <code>deletetag</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">3.21. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.22. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.24. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.25. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#switching-theme-code-switch-code-code-since-v1-1-code">3.26. Switching Theme : <code>switch</code> <code>Since v1.1</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.27. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.28. Saving the data</a></li>
-<li><a href="#sending-an-email-code-since-v1-5rc-code">3.29. Sending an email <code>Since v1.5rc</code></a></li>
-<li><a href="#replying-an-email-code-coming-in-v1-5-code">3.30. Replying an email <code>[coming in v1.5]</code></a></li>
-<li><a href="#forwarding-an-email-code-coming-in-v1-5-code">3.31. Forwarding an email <code>[coming in v1.5]</code></a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.32. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.21. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.22. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.23. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.24. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#switching-theme-code-switch-code-code-since-v1-1-code">3.25. Switching Theme : <code>switch</code> <code>Since v1.1</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.26. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.27. Saving the data</a></li>
+<li><a href="#sending-an-email-code-since-v1-5rc-code">3.28. Sending an email <code>Since v1.5rc</code></a></li>
+<li><a href="#replying-an-email-code-coming-in-v1-5-code">3.29. Replying an email <code>[coming in v1.5]</code></a></li>
+<li><a href="#forwarding-an-email-code-coming-in-v1-5-code">3.30. Forwarding an email <code>[coming in v1.5]</code></a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.31. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -589,49 +588,7 @@ Deletes the family tag for every person in the address book.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.21. Selecting a person : <code>select</code></a></h3>
-<div class="paragraph">
-<p>Selects the person identified by the index number used in the last person listing.<br>
-Format: <code>select INDEX</code>
-Alias: <code>s</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>select 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.22. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.21. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code>
@@ -653,7 +610,7 @@ Alias: <code>h</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.23. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.22. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code>
@@ -684,12 +641,6 @@ Alias: <code>u</code></p>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 <li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
 <p><code>delete 1</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
@@ -699,7 +650,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.24. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.23. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code>
@@ -732,7 +683,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.25. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.24. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code>
@@ -740,46 +691,46 @@ Alias: <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="switching-theme-code-switch-code-code-since-v1-1-code"><a class="link" href="#switching-theme-code-switch-code-code-since-v1-1-code">3.26. Switching Theme : <code>switch</code> <code>Since v1.1</code></a></h3>
+<h3 id="switching-theme-code-switch-code-code-since-v1-1-code"><a class="link" href="#switching-theme-code-switch-code-code-since-v1-1-code">3.25. Switching Theme : <code>switch</code> <code>Since v1.1</code></a></h3>
 <div class="paragraph">
 <p>Switches theme from dark to light or vice versa. Persists across restarts.<br>
 Format: <code>switch</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.27. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.26. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.28. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.27. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sending-an-email-code-since-v1-5rc-code"><a class="link" href="#sending-an-email-code-since-v1-5rc-code">3.29. Sending an email <code>Since v1.5rc</code></a></h3>
+<h3 id="sending-an-email-code-since-v1-5rc-code"><a class="link" href="#sending-an-email-code-since-v1-5rc-code">3.28. Sending an email <code>Since v1.5rc</code></a></h3>
 <div class="paragraph">
 <p>Press the email of any contact on the person panel for an email popup to appear. To close the window without sending, push ESC or the cancel button.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="replying-an-email-code-coming-in-v1-5-code"><a class="link" href="#replying-an-email-code-coming-in-v1-5-code">3.30. Replying an email <code>[coming in v1.5]</code></a></h3>
+<h3 id="replying-an-email-code-coming-in-v1-5-code"><a class="link" href="#replying-an-email-code-coming-in-v1-5-code">3.29. Replying an email <code>[coming in v1.5]</code></a></h3>
 <div class="paragraph">
 <p>Reply any email displayed on the email panel with the receiver and subject auto-filled, and the original contents on the bottom of the email.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="forwarding-an-email-code-coming-in-v1-5-code"><a class="link" href="#forwarding-an-email-code-coming-in-v1-5-code">3.31. Forwarding an email <code>[coming in v1.5]</code></a></h3>
+<h3 id="forwarding-an-email-code-coming-in-v1-5-code"><a class="link" href="#forwarding-an-email-code-coming-in-v1-5-code">3.30. Forwarding an email <code>[coming in v1.5]</code></a></h3>
 <div class="paragraph">
 <p>Forward any email displayed on the email panel with the subject auto-filled, and the original contents on the bottom of the email.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.32. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.31. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -862,10 +813,6 @@ e.g. <code>find James Jake</code></p>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
-</li>
-<li>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
 <li>
@@ -881,7 +828,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 03:47:17 UTC
+Last updated 2018-04-14 05:39:18 UTC
 </div>
 </div>
 </body>
