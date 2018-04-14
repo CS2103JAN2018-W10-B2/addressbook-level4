@@ -31,6 +31,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniquePersonList persons;
     private final UniqueTagList tags;
     private final UniqueAppointmentList appointments;
+    private String password;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -43,6 +44,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         tags = new UniqueTagList();
         appointments = new UniqueAppointmentList();
+        password = "123456";
     }
 
     public AddressBook() {}
@@ -78,6 +80,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         List<Person> syncedPersonList = newData.getPersonList().stream()
                 .map(this::syncWithMasterTagList)
                 .collect(Collectors.toList());
+        this.password = newData.getPassword();
 
         try {
             setPersons(syncedPersonList);
@@ -128,6 +131,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         removeUnusedTags();
     }
 
+    //@@author XavierMaYuqian
     /**
      * Removes all {@code Tag}s that are not used by any {@code Person} in this {@code AddressBook}.
      */
@@ -201,12 +205,14 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public boolean removePerson(Person key) throws PersonNotFoundException {
         if (persons.remove(key)) {
+            removePersonFromAppointments(key);
             return true;
         } else {
             throw new PersonNotFoundException();
         }
     }
 
+    //@@author XavierMaYuqian
     /**
      * Sorts all the persons alphabetical order of their names
      */
@@ -225,6 +231,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addAppointment(Appointment appointment) throws DuplicateAppointmentException {
         appointments.add(appointment);
+        appointments.sort();
     }
 
     /**
@@ -233,6 +240,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public boolean removeAppointment(Appointment key) throws AppointmentNotFoundException {
         if (appointments.remove(key)) {
+            appointments.sort();
             return true;
         } else {
             throw new AppointmentNotFoundException();
@@ -251,6 +259,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedAppointment);
 
         appointments.setAppointment(target, editedAppointment);
+        appointments.sort();
     }
     //@@author
 
@@ -260,6 +269,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         tags.add(t);
     }
 
+    //@@author XavierMaYuqian
     /**
      * Removes tags from persons
      */
@@ -273,6 +283,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
     }
 
+    //@@author XavierMaYuqian
     /**
      * Removes tags from persons
      */
@@ -293,6 +304,57 @@ public class AddressBook implements ReadOnlyAddressBook {
                      + "See Person#equals(Object).");
         }
     }
+
+    //@@author XavierMaYuqian
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    //@@author XavierMaYuqian
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    //@@author ongkuanyang
+
+    /**
+     * Removes a person from all appointments.
+     * @param person person to remove
+     */
+    private void removePersonFromAppointments(Person person) {
+        for (Appointment appointment : appointments) {
+            UniquePersonList newPersons = new UniquePersonList();
+
+            try {
+                newPersons.setPersons(appointment.getPersons());
+            } catch (DuplicatePersonException e) {
+                throw new AssertionError("Impossible to have duplicate. Persons is from appointment.");
+            }
+
+            if (!newPersons.contains(person)) {
+                return;
+            }
+
+            try {
+                newPersons.remove(person);
+            } catch (PersonNotFoundException e) {
+                throw new AssertionError("Impossible. We just checked the existence of person.");
+            }
+
+            Appointment newAppointment = new Appointment(appointment.getName(), appointment.getTime(), newPersons);
+
+            try {
+                updateAppointment(appointment, newAppointment);
+            } catch (AppointmentNotFoundException e) {
+                throw new AssertionError("Impossible. Appointment is in addressbook.");
+            } catch (DuplicateAppointmentException e) {
+                throw new AssertionError("Impossible. We are modifying an existing appointment's person list.");
+            }
+        }
+    }
+
+    //@@author
 
     //// util methods
 

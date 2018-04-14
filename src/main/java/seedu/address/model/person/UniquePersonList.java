@@ -94,6 +94,7 @@ public class UniquePersonList implements Iterable<Person> {
         setPersons(replacement);
     }
 
+    //@@author XavierMaYuqian
     /**
      * Sort all persons based on alphabetical order of their full names
      */

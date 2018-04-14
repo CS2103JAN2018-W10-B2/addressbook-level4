@@ -28,4 +28,6 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Tag> getTagList();
 
+    String getPassword();
+
 }

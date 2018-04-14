@@ -103,6 +103,16 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         return FXCollections.unmodifiableObservableList(internalList);
     }
 
+    /**
+     * Sorts based on decreasing time of appointment. Note that time is based on instant not local time.
+     *
+     */
+
+    public void sort() {
+        internalList.sort((appointmentA, appointmentB) -> (
+            -(appointmentA.getTime().time.compareTo(appointmentB.getTime().time))));
+    }
+
     @Override
     public Iterator<Appointment> iterator() {
         return internalList.iterator();

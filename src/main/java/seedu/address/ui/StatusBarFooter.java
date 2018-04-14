@@ -75,6 +75,7 @@ public class StatusBarFooter extends UiPart<Region> {
         Platform.runLater(() -> this.syncStatus.setText(status));
     }
 
+    //@@author XavierMaYuqian
     private void setTotalPersons(int totalPersons) {
         Platform.runLater(() -> this.totalPersonsStatus.setText(String.format(TOTAL_PERSONS_STATUS, totalPersons)));
     }

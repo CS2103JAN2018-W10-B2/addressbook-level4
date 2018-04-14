@@ -230,6 +230,32 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+//tag::Login/Logout[]
+=== Login/logout & reset password feature
+====Current Implementation
+The login/logout command feature requires the sales person to enter password whenever he/she starts to use the addressbook. This will allow for a safer address book.
+
+To lock the adress book, simply type 'lock' or the command alias 'lk'.
+
+An example of the sort command would be: lock
+
+An example of the sort command alias would be: lk
+
+To unlock the adress book, simply type 'unlock [PASSWORD]' or the command alias 'ulk [PASSWORD]'.
+
+An example of the sort command would be: unlock 123456
+
+An example of the sort command alias would be: ulk 123456
+
+The reset password command feature allows the sales person to change password. This will allow for a safer address book.
+
+To change the password, simply type 'setPassword [OLD_PASSWORD] [NEW_PASSWORD]' or the command alias 'sp [OLD_PASSWORD] [NEW_PASSWORD]'.
+
+An example of the change password command would be: setPassword 123456 123
+
+An example of the sort command alias would be: sp 123456 123
+//end::Login/logout[]
+
 //tag::SortCommand[]
 === SortCommand feature
 ==== Current Implementation
@@ -242,16 +268,28 @@ An example of the sort command would be: sort
 An example of the sort command alias would be: so
 //end::SortCommand[]
 
-// tag::DeletTag[]
-=== DeletTag feature
+//tag::ExportCommand[]
+=== ExportCommand feature
+==== Current Implementation
+The export command feature allows the sales person to export their clients to a csv file. This will allow for a more organized and neat address book.
+
+To export the adress book, simply type 'export' or the command alias 'ep'.
+
+An example of the sort command would be: export
+
+An example of the sort command alias would be: ep
+//end::ExportCommand[]
+
+// tag::DeleteTag[]
+=== DeleteTag feature
 ==== Current Implementation
 The delete tag command allows user to remove a particular tag from all persons in the AddressBook. For example, he may want to delete the tag "neigbour" from all his contacts if he is no longer staying at the place.
 
-We implement Model#deleteTag(Tag) torwards the direction of removeTag command, so that the developer dealing with the 'logic' component is able to implement such a command.
+To delete a tag, simply type 'deletetag [TAG]' or the command alias 'dt [TAG]'.
 
-==== Design Considerations
+An example of the delete tag command would be: deletetag firends
 
-===== Aspect: Implementation of time zone
+An example of the sort command alias would be: dt friends
 
 The current codebase has a flaw in tags management. Tags no longer in use by anyone may still exist on the AddressBook. This may cause some tests to fail.
 
@@ -261,7 +299,7 @@ The current codebase has a flaw in tags management. Tags no longer in use by any
 * **Alternative 2:** When deleting a tag, check whether there are person still having it as a tag.
 ** Pros: Less time consuming.
 ** Cons: More complex inplementation.
-//end::DeletTag[]
+//end::DeleteTag[]
 
 // tag::TotalPersonStatusBar[]
 === TotalPersonStatusBar feature
@@ -342,6 +380,24 @@ An example of the edit command would be: edit 1 tz/SGT
 ** Pros: Will use less memory (e.g. number of time zones are less than or equal to number of users).
 ** Cons: May be more difficult to schedule meetings with clients with unknown time zones.
 // end::timezone[]
+
+//tag::email[]
+=== Email feature
+==== Current Implementation
+The email feature allows the user to send emails in the app by typing their message in an email compose pop up box.
+The inbox feature allows the user to see a preview of the plain text emails that they have received right when they open the app. To view the message, the user clicks the message and an popup will appear with the full message.
+
+==== Design Considerations
+
+===== Aspect: The UI of the inbox panel
+* **Alternative 1 (current choice):** Display the inbox panel so that it can be seen right when the user opens Sell IT.
+** Pros: Convenient and saves time which are key aspects as the user is a busy sales person.
+** Cons: May clutter up the app's start page.
+* **Alternative 2:** Inbox can be displayed on a separate panel which can be accessed by the user through a mail icon button.
+** Pros: Less clutter
+** Cons: May be less convenient for the sales person to always need to click the button to view their inbox.
+// end::email[]
+
 
 // tag::undoredo[]
 === Undo/Redo feature
@@ -908,14 +964,20 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 ==== Ong Kuan Yang
 * *Major*: A calendar or appointment scheduling feature allows the salesperson to record down when he has appointments with his clients and to see at a glance his future appointments for the days/month ahead.
 * *Minor*: An archival feature for clients that the salesperson is no longer in contact with so that they do not clutter up the interface as the salesperson has to manage a lot of clients.
+* *Minor*: A switch theme command to switch between dark and light themes.
+* *Minor*: Command alias feature so that user does not have to type long commands.
 
 ==== Gloria Law
-* *Major*: A chat bot which the sales person can ask simple questions regarding his schedule and clients.
+* *Major*: An email feature comprised of an email inbox panel and the ability to compose, reply and forward emails.
 * *Minor*: A time zone feature which allows the sales person to add the timezone details of their clients.
 
 ==== Ma Yuqian
+* *Major*: A login/logout & reset password function that allows the user to verify his/her identity when he/she starts using this APP to protect his/her privacy
 * *Minor*: A sort command that can sort in alphabetical order.
-* *Minor*: A remove tag method in model component.
+* *Minor*: A remove tag command that can remove tags from all the people in the address book.
+* *Minor*: A comment feature which allows the sales person to add the notes of their clients.
+* *Minor*: A total person at status bar to show the total number of persons in the address book.
+* *Minor*: A export command that can export all persons in the address book to a csv file.
 
 [appendix]
 == User Stories
@@ -928,6 +990,10 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
 |`* * *` |user |schedule meetings with my clients |remember when I am supposed to meet them
+
+|`* * *` |user |conveniently send emails to clients |increase efficiency and save time
+
+|`* * *` |user |conveniently see my email inbox |know when my clients are contacting me
 
 |`* * *` |user |tag clients with important info like the products they are interested in | so that I can list and group together related clients quickly.
 
@@ -944,6 +1010,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |user |archive certain contacts |useless or expired contacts won't clutter up the program but I can still find them when I need to
 
 |`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
+
+|`* *` |user |delete a certain tag for all persons |remove certain tags if the relationship is not there anymore
 
 |`*` |user with many persons in the address book |sort persons by name |locate a person easily
 |=======================================================================
@@ -1004,6 +1072,25 @@ Use case ends.
 +
 Use case ends.
 * 4a. The user does not select any contacts.
++
+Use case ends.
+
+[discrete]
+=== Use case: Send email to client.
+
+*MSS*
+
+1. Sell IT shows the user a list of clients.
+2. User clicks the email of the client they want to contact.
+3. Sell IT displays the email compose pop up box.
+4. User types their email contents and pushes the send button.
+5. Sell IT attempts to send their email and displays a success or failure message.
+6. User closes the pop up by pressing the ESCAPE key or the return button.
+
+*Extensions*
+
+[none]
+* 4a. The user clicks cancel.
 +
 Use case ends.
 

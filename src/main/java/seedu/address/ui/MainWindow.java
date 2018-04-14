@@ -1,6 +1,9 @@
 package seedu.address.ui;
 
+import java.io.IOException;
 import java.util.logging.Logger;
+
+import javax.mail.MessagingException;
 
 import com.google.common.eventbus.Subscribe;
 
@@ -21,6 +24,7 @@ import seedu.address.commons.events.ui.SwitchThemeRequestEvent;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
 
+
 /**
  * The Main Window. Provides the basic application layout containing
  * a menu bar and space where other JavaFX elements can be placed.
@@ -40,14 +44,15 @@ public class MainWindow extends UiPart<Stage> {
     private String theme;
 
     // Independent Ui parts residing in this Ui container
-    private BrowserPanel browserPanel;
+    private CalendarPanel calendarPanel;
     private PersonListPanel personListPanel;
     private AppointmentListPanel appointmentListPanel;
     private Config config;
     private UserPrefs prefs;
+    private MailPanel mailPanel;
 
     @FXML
-    private StackPane browserPlaceholder;
+    private StackPane calendarPlaceholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -66,6 +71,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane emailPanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
         super(FXML, primaryStage);
@@ -127,8 +135,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        browserPanel = new BrowserPanel();
-        browserPlaceholder.getChildren().add(browserPanel.getRoot());
+        calendarPanel = new CalendarPanel(logic.getFilteredAppointmentList());
+        calendarPlaceholder.getChildren().add(calendarPanel.getRoot());
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
@@ -145,6 +153,21 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(logic);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        try {
+            mailPanel = new MailPanel();
+            emailPanelPlaceholder.getChildren().add(mailPanel.getRoot());
+        } catch (IOException e) {
+            System.out.println("Caught IOException");
+        } catch (MessagingException e) {
+            System.out.println("Caught MessagingException @ Main");
+        }
+
+        if (this.theme.equals(DARK_THEME)) {
+            calendarPanel.switchDarkTheme();
+        } else {
+            calendarPanel.switchLightTheme();
+        }
     }
 
     void hide() {
@@ -167,6 +190,7 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    //@@author ongkuanyang
     /**
      * Sets the default theme based on UserPrefs
      */
@@ -175,6 +199,7 @@ public class MainWindow extends UiPart<Stage> {
         String fullPath = getClass().getResource(this.theme).toExternalForm();
         primaryStage.getScene().getStylesheets().add(fullPath);
     }
+    //@@author
 
     /**
      * Returns the current size and the position of the main Window.
@@ -193,6 +218,7 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow.show();
     }
 
+    //@@author ongkuanyang
     /**
      * Switches the current theme
      */
@@ -203,14 +229,16 @@ public class MainWindow extends UiPart<Stage> {
 
         if (this.theme.equals(LIGHT_THEME)) {
             this.theme = DARK_THEME;
+            calendarPanel.switchDarkTheme();
         } else {
             this.theme = LIGHT_THEME;
+            calendarPanel.switchLightTheme();
         }
 
         fullPath = getClass().getResource(this.theme).toExternalForm();
         primaryStage.getScene().getStylesheets().add(fullPath);
     }
-
+    //@@author
 
     void show() {
         primaryStage.show();
@@ -229,7 +257,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     void releaseResources() {
-        browserPanel.freeResources();
+        calendarPanel.freeResources();
     }
 
     @Subscribe

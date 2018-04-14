@@ -21,6 +21,9 @@ public interface Model {
     /** {@code Predicate} Predicate that shows all persons */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
+    /** {@code Predicate} Predicate that shows all appointment */
+    Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
+
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyAddressBook newData);
 
@@ -51,6 +54,7 @@ public interface Model {
             throws DuplicateAppointmentException, AppointmentNotFoundException;
     //@@author
 
+    //@@author XavierMaYuqian
     /** Sorts the persons in AddressBook based on the alphabetical order of their names*/
     void sort();
 
@@ -91,7 +95,16 @@ public interface Model {
      */
     void updateFilteredAppointmentList(Predicate<Appointment> predicate);
 
+    //@@author XavierMaYuqian
     /** Removes the given {@code tag} from all {@code Person}s. */
     void deleteTag(Tag t);
+
+    //@@author XavierMaYuqian
+    /** Adds the given password */
+    void setPassword(String e);
+
+    //@@author XavierMaYuqian
+    /** Gets the password */
+    String getPassword();
 
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-         minWidth="1000" minHeight="600">
+         minWidth="1400" minHeight="500">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -60,10 +60,14 @@
             <StackPane fx:id="appointmentListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
 
-          <StackPane fx:id="browserPlaceholder" prefWidth="340" >
+          <VBox fx:id="emailList" minWidth="340" prefWidth="340" SplitPane.resizableWithParent="false">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
+            <StackPane fx:id="emailPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          </VBox>
+
+          <StackPane fx:id="calendarPlaceholder" prefWidth="340" >
           </StackPane>
         </SplitPane>
 

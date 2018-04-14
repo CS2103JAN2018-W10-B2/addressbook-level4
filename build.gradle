@@ -22,6 +22,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
+    jcenter()
     mavenCentral()
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
@@ -41,6 +42,11 @@ jacocoTestReport {
 dependencies {
     String testFxVersion = '4.0.7-alpha'
 
+    compile 'com.sun.mail:javax.mail:1.6.1'
+    compile 'javax.mail:javax.mail-api:1.6.1'
+    compile 'javax.activation:activation:1.1.1'
+
+    compile group: 'com.calendarfx', name: 'view', version: '8.4.2'
     compile group: 'org.fxmisc.easybind', name: 'easybind', version: '1.0.3'
     compile group: 'org.controlsfx', name: 'controlsfx', version: '8.40.11'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.0'
@@ -57,13 +63,13 @@ dependencies {
 }
 
 shadowJar {
-    archiveName = "addressbook.jar"
+    archiveName = "sellit.jar"
 
     destinationDir = file("${buildDir}/jar/")
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.12'
+    gradleVersion = '4.6'
 }
 
 task coverage(type: JacocoReport) {

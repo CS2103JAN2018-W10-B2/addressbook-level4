@@ -37,6 +37,7 @@ public class StatusBarFooterHandle extends NodeHandle<Node> {
         return syncStatusNode.getText();
     }
 
+    //@@author XavierMaYuqian
     /**
      * Returns the text of the 'total persons' portion of the status bar.
      */
@@ -51,6 +52,7 @@ public class StatusBarFooterHandle extends NodeHandle<Node> {
         return saveLocationNode.getText();
     }
 
+    //@@author XavierMaYuqian
     /**
      * Remembers the content of the sync status portion of the status bar.
      */

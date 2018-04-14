@@ -229,6 +229,13 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
                 + ADDRESS_DESC_AMY + TIMEZONE_DESC_AMY + COMMENT_DESC_AMY
                 + INVALID_TAG_DESC;
         assertCommandFailure(command, Tag.MESSAGE_TAG_CONSTRAINTS);
+
+        //@@author glorialaw
+        /* Case: blank timezone -> rejected */
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY + INVALID_TIMEZONE_DESC
+                + TAG_DESC_FRIEND;
+        assertCommandFailure(command, CustTimeZone.MESSAGE_TIMEZONE_CONSTRAINTS);
     }
 
     /**

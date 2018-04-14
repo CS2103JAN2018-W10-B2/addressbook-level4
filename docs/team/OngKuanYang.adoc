@@ -1,0 +1,62 @@
+= Ong Kuan Yang - Project Portfolio
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: SellIt
+
+---
+
+== Overview
+
+SellIt is a desktop addressbook and calendar application built for salesmen. It is meant to keep track of a large number of clients based across many different countries as well as the appointments that are scheduled with them. It supports note-taking and archiving. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+
+== Summary of contributions
+
+* *Major enhancement*: added *the ability to add and edit appointments* and to see them in a calendar
+** What it does: allows the user to add an appointment. Existing appointments can be edited.
+** Justification: This feature improves the product significantly because a salesperson may have many appointments with his clients that he wants to keep track of.
+** Highlights: This enhancement's implementation is challenging as it involves many different modules of the code, such as the storage, model and logic modules.
+
+* *Minor enhancement*: An archival feature for clients that the salesperson is no longer in contact with so that they do not clutter up the interface as the salesperson has to manage a lot of clients.
+
+* *Minor enhancement*: A switch theme command to switch between dark and light themes.
+
+* *Minor enhancement*: Command alias feature so that user does not have to type long commands.
+
+* *Code contributed*: [https://github.com/CS2103JAN2018-W10-B2/main/blob/master/collated/functional/ongkuanyang.md[Functional code]] [https://github.com/CS2103JAN2018-W10-B2/main/blob/master/collated/test/ongkuanyang.md[Test code]]
+
+* *Other contributions*:
+
+** Project management:
+*** Managed releases `v1.2` - `v1.5rc` (4 releases) on GitHub
+*** Created issues and issues tags on GitHub
+*** Created the team and repo on Github
+*** Added Travis support on Github
+
+== Contributions to the User Guide
+
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=addappointment]
+
+include::../UserGuide.adoc[tag=editappointment]
+
+include::../UserGuide.adoc[tag=deleteappointment]
+
+include::../UserGuide.adoc[tag=archive]
+
+include::../UserGuide.adoc[tag=unarchive]
+
+include::../UserGuide.adoc[tag=switch]
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=archive]
+

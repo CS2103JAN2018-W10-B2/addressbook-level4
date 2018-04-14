@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- @@author glorialaw -->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane fx:id="successPopup" onKeyPressed="#handleKeyPress" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="200.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="results" layoutX="-7.0" layoutY="-7.0" prefHeight="215.0" prefWidth="217.0" text="Label" wrapText="true" />
+         </children>
+      </Pane>
+      <Button fx:id="closeButton" layoutX="537.0" layoutY="14.0" mnemonicParsing="false" onAction="#cancelWindow" text="return" />
+   </children>
+</AnchorPane>

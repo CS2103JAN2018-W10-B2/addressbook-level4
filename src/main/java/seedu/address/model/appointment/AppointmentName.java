@@ -11,7 +11,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class AppointmentName {
 
     public static final String MESSAGE_NAME_CONSTRAINTS =
-            "appointment names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Appointment names should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*
      * The first character of the name must not be a whitespace,

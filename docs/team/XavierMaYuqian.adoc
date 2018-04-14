@@ -1,0 +1,78 @@
+= Ma Yuqian - Project Portfolio
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: SellIT
+
+---
+
+== Overview
+
+Sell IT is for salesmen who prefer to use a desktop app for managing their clients. More importantly, Sell IT is optimized for those who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Sell IT can get your contact management tasks done faster than traditional GUI apps. It is written in Java, and has about 10 kLoC.
+
+== Summary of contributions
+
+* *Major enhancement*: added *the login/logout & reset password function*
+** What it does: allows the user to lock the addressbook when he/she does not need to use it and unlock the addressbook with password when he/she needs to use it. And the user can also change the password when neccessary.
+** Justification: This feature improves the product significantly because a user may needs privacy and wants to protect his personal data. This improve the security of the APP.
+** Highlights: This enhancement does not affect existing commands and commands to be added in future. For future added features, just make sure it does not violate any requirements by this feature
+
+* *Minor enhancement*: added a sort command that can sort in alphabetical order.
+
+* *Minor enhancement*: added a remove tag command that can remove tags from all the people in the address book.
+
+* *Minor enhancement*: added a comment feature which allows the sales person to add the notes of their clients.
+
+* *Minor enhancement*: added an export command that can export all the people in the address book to a csv file.
+
+* *Code contributed*: [https://github.com/CS2103JAN2018-W10-B2/main/blob/master/collated/functional/XavierMaYuqian.md[Functional code]] [https://github.com/CS2103JAN2018-W10-B2/main/blob/master/collated/test/XavierMaYuqian.md[Test code]]
+
+* *Other contributions*:
+
+** Enhancements to existing features:
+*** Modified the GUI so that the total number of contacts is shown at the status bar (Pull request https://github.com/CS2103JAN2018-W10-B2/main/pull/29[29])
+** Documentation:
+*** Added my own features and use cases into the developer guide and user guide.
+** Community:
+*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com/CS2103JAN2018-F14-B1/main/issues/139[139], https://github.com/CS2103JAN2018-F14-B1/main/issues/149[149])
+
+== Contributions to the User Guide
+
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=unlock]
+
+include::../UserGuide.adoc[tag=lock]
+
+include::../UserGuide.adoc[tag=setPassword]
+
+include::../UserGuide.adoc[tag=sort]
+
+include::../UserGuide.adoc[tag=deletetag]
+
+include::../UserGuide.adoc[tag=export]
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=Login/Logout]
+
+include::../DeveloperGuide.adoc[tag=SortCommand]
+
+include::../DeveloperGuide.adoc[tag=DeleteTag]
+
+include::../DeveloperGuide.adoc[tag=TotalPersonStatusBar]
+
+include::../DeveloperGuide.adoc[tag=AddComment]
+
+include::../UserGuide.adoc[tag=ExportCommand]
+
+== PROJECT: PowerPointLabs
+
+---

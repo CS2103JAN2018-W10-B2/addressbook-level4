@@ -79,6 +79,7 @@ public class AddressBookTest {
         addressBook.getTagList().remove(0);
     }
 
+    //@@author XavierMaYuqian
     @Test
     public void updatePersonDetailsChangedPersonsAndTagsListUpdated() throws Exception {
         AddressBook addressBookUpdatedToAmy = new AddressBookBuilder().withPerson(BOB).build();
@@ -89,6 +90,7 @@ public class AddressBookTest {
         assertEquals(expectedAddressBook, addressBookUpdatedToAmy);
     }
 
+    //@@author XavierMaYuqian
     @Test
     public void removeTagNonExistentTagAddressBookUnchanged() throws Exception {
         addressBookWithBobAndAmy.removeTag(new Tag(VALID_TAG_UNUSED));
@@ -98,6 +100,7 @@ public class AddressBookTest {
         assertEquals(expectedAddressBook, addressBookWithBobAndAmy);
     }
 
+    //@@author XavierMaYuqian
     @Test
     public void removeTagTagUsedByMultiplePersonsTagRemoved() throws Exception {
         addressBookWithBobAndAmy.removeTag(new Tag(VALID_TAG_FRIEND));
@@ -139,6 +142,12 @@ public class AddressBookTest {
         @Override
         public ObservableList<Tag> getTagList() {
             return tags;
+        }
+
+        //@@author XavierMaYuqian
+        @Override
+        public String getPassword() {
+            return null;
         }
     }
 

@@ -1,0 +1,65 @@
+= Gloria Law - Project Portfolio
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: Sell IT
+
+---
+
+== Overview
+
+Sell IT is for salesmen who prefer to use a desktop app for managing their clients. More importantly, Sell IT is optimized for those who prefer to work with a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Sell IT can get your contact management tasks done faster than traditional GUI apps. It is written in Java, and has about 10kLoC.
+== Summary of contributions
+
+* *Major enhancement*: added *the ability to send emails to clients and view inbox through Sell IT*
+** What it does: allows the user to compose new plain text emails in Sell IT. A mail panel was also added to allow the user to view their inbox in the mail panel.
+** Justification: This feature improves the product significantly because as a busy salesperson, it is essential for the user to be able to contact their clients conveniently in one platform.
+** Highlights: This enhancement affects the way the salesperson can communicate with their clients. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required advanced knowledge of javafx and java mail api.
+** Credits: http://www.oracle.com/technetwork/java/javamail/index.html {mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
+
+* *Minor enhancement*: added a timezone command that allows the user to enter their client's timezone so that they can schedule meetings more effectively.
+
+* *Code contributed*: [https://github.com/CS2103JAN2018-W10-B2/main/blob/master/collated/functional/glorialaw.md] [https://github.com[Test code]] _{give links to collated code files}_
+
+* *Other contributions*: Modified the GUI so that when the command entered is incorrect, the text turns red.
+
+** Enhancements to existing features:
+*** Modified the GUI so that incorrect commands are displayed in red (Pull request https://github.com/CS2103JAN2018-W10-B2/main/pull/[4])
+** Documentation:
+*** Added my features and use cases into the developer guide and user guide.
+** Community:
+*** PRs reviewed (with non-trivial review comments):
+*** Contributed to forum discussions (examples:  https://github.com/nus-cs2103-AY1718S2/forum/issues/[41])
+*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com/CS2103JAN2018-W09-B3/main/issues/[132], https://github.com/CS2103JAN2018-W09-B3/main/issues/[129], https://github.com/CS2103JAN2018-W09-B3/main/issues/[121])
+** Tools:
+*** Integrated the Java Mail API to the project (https://github.com/CS2103JAN2018-W10-B2/main/pull/[53])
+
+== Contributions to the User Guide
+
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=sendemail]
+
+include::../UserGuide.adoc[tag=replyemail]
+
+include::../UserGuide.adoc[tag=forwardemail]
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=timezone]
+
+include::../DeveloperGuide.adoc[tag=email]
+
+
+== PROJECT: PowerPointLabs
+
+---
+
+_{Optionally, you may include other projects in your portfolio.}_
