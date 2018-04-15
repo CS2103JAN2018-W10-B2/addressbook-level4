@@ -60,6 +60,9 @@
 <p><strong>Minor enhancement</strong>: Command alias feature so that user does not have to type long commands.</p>
 </li>
 <li>
+<p><strong>Minor enhancement</strong>: Loading Screen for emails so app does not become unresponsive.</p>
+</li>
+<li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W10-B2/main/blob/master/collated/functional/ongkuanyang.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W10-B2/main/blob/master/collated/test/ongkuanyang.md">Test code</a>]</p>
 </li>
 <li>
@@ -71,7 +74,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.2</code> - <code>v1.5rc</code> (4 releases) on GitHub</p>
+<p>Managed releases <code>v1.2</code> - <code>v1.5</code> (5 releases) on GitHub</p>
 </li>
 <li>
 <p>Created issues and issues tags on GitHub</p>
@@ -323,7 +326,166 @@ Format: <code>switch</code></p>
 <p>Pros: Uses less space than the alternative.</p>
 </li>
 <li>
-<p>Cons: Harder to implement, more changes have to be made to existing codebase.</p>
+<p>Cons: Harder to implement, more changes have to be made to existing codebase.
+=== Switch theme feature
+==== Current Implementation
+image::SwitchSequenceDiagram.png[width="800"]
+The switch theme feature allows the salesperson to switch between dark and light thenmes as he might have to work under different lighting conditions. The theme that is in used persists across restarts</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See sequence diagram. The archival feature is implemented by triggering an <code>SwitchThemeRequestEvent()</code> which is then handled in <code>MainWindow</code>.
+The theme switching in done in two ways. For the main window, it is done by changing the CSS stylesheet used. For the calendar, because the stylesheet is complicated and is provided by an external library, we use a JavaFX effect to invert all colors.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-theme-switching-is-triggered-by-an-event"><a class="link" href="#aspect-theme-switching-is-triggered-by-an-event">Aspect: Theme switching is triggered by an event</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Theme switching is triggered by an event</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Preserves modularity, and Separation of Concerns.</p>
+</li>
+<li>
+<p>Cons: More code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Theme switching happens directly in switch theme command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simpler.</p>
+</li>
+<li>
+<p>Cons: Breaks modularity and Separations of Concerns. UI should be handled in the UI section not the Logic section.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-calendar-theme-switching-is-handled-by-a-javafx-effect"><a class="link" href="#aspect-calendar-theme-switching-is-handled-by-a-javafx-effect">Aspect: Calendar theme switching is handled by a JavaFX effect</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Calender theme swithing is handled by JavaFX effect</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simple to implement</p>
+</li>
+<li>
+<p>Cons: Potentially ugly and less flexible, as cannot configure the individual colours.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create another calendar CSS for the dark theme</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More flexible in choice of colors, resulting in more beautiful UI.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement, due to complexity of CSS stylesheet.</p>
+</li>
+<li>
+<p>Cons: Loses color consistency of simply inverting colors.</p>
+</li>
+<li>
+<p>Cons: Any future change in colors have to update two stylesheets.
+=== Appointments feature
+==== Current Implementation
+The appointments feature allows the salesperson to add and edit appointments that he have with clients in the contact list. He can also view the appointments in a calendar.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The edit appointment feature is interesting in that editing persons check whether the person is already in the appointment. If so, the person is removed. Otherwise, the person is added.
+This differs from the behaviour of editing tags of a person, which is destructive and overwrite all tags.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-editing-an-appointment-s-person-list-is-non-destructive"><a class="link" href="#aspect-editing-an-appointment-s-person-list-is-non-destructive">Aspect: Editing an appointment&#8217;s person list is non-destructive</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Editing an appointment&#8217;s person list adds the person if not present and removes the person otherwise.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Fits the usual use case of a person saying he is/is unable to make it for the appointment</p>
+</li>
+<li>
+<p>Cons: Cannot overwrite the person list with a new set of persons directly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Destructively edit the person list, replacing it with the new list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to overwrite the person list.</p>
+</li>
+<li>
+<p>Cons: Does not fit the expected use case</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-calendar-is-handled-by-an-external-library-calendarfx"><a class="link" href="#aspect-calendar-is-handled-by-an-external-library-calendarfx">Aspect: Calendar is handled by an external library, CalendarFX</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Calender is handled by external library, CalendarFX</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less effort, make good use of existing code to reduce duplication of effort.</p>
+</li>
+<li>
+<p>Cons: Calendar is less customisable. Limited to what is already implemented.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create our own calendar</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More flexible terms of how the calendar will work</p>
+</li>
+<li>
+<p>Cons: More effort. Time could be used on other features.</p>
 </li>
 </ul>
 </div>
@@ -338,7 +500,7 @@ Format: <code>switch</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 05:03:48 UTC
+Last updated 2018-04-15 05:24:03 UTC
 </div>
 </div>
 </body>

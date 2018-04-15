@@ -51,12 +51,14 @@
 <li><a href="#deletetag-feature">3.5. DeleteTag feature</a></li>
 <li><a href="#addcomment-feature">3.6. AddComment feature</a></li>
 <li><a href="#archive-feature">3.7. Archive feature</a></li>
-<li><a href="#timezone-feature">3.8. TimeZone feature</a></li>
-<li><a href="#email-feature">3.9. Email feature</a></li>
-<li><a href="#undo-redo-feature">3.10. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.11. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.12. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.13. Configuration</a></li>
+<li><a href="#switch-theme-feature">3.8. Switch theme feature</a></li>
+<li><a href="#appointments-feature">3.9. Appointments feature</a></li>
+<li><a href="#timezone-feature">3.10. TimeZone feature</a></li>
+<li><a href="#email-feature">3.11. Email feature</a></li>
+<li><a href="#undo-redo-feature">3.12. Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">3.13. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.14. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.15. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -869,9 +871,184 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="timezone-feature"><a class="link" href="#timezone-feature">3.8. TimeZone feature</a></h3>
+<h3 id="switch-theme-feature"><a class="link" href="#switch-theme-feature">3.8. Switch theme feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.8.1. Current Implementation</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/SwitchSequenceDiagram.png" alt="SwitchSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The switch theme feature allows the salesperson to switch between dark and light thenmes as he might have to work under different lighting conditions. The theme that is in used persists across restarts</p>
+</div>
+<div class="paragraph">
+<p>See sequence diagram. The archival feature is implemented by triggering an <code>SwitchThemeRequestEvent()</code> which is then handled in <code>MainWindow</code>.
+The theme switching in done in two ways. For the main window, it is done by changing the CSS stylesheet used. For the calendar, because the stylesheet is complicated and is provided by an external library, we use a JavaFX effect to invert all colors.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.8.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-theme-switching-is-triggered-by-an-event"><a class="link" href="#aspect-theme-switching-is-triggered-by-an-event">Aspect: Theme switching is triggered by an event</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Theme switching is triggered by an event</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Preserves modularity, and Separation of Concerns.</p>
+</li>
+<li>
+<p>Cons: More code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Theme switching happens directly in switch theme command</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simpler.</p>
+</li>
+<li>
+<p>Cons: Breaks modularity and Separations of Concerns. UI should be handled in the UI section not the Logic section.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-calendar-theme-switching-is-handled-by-a-javafx-effect"><a class="link" href="#aspect-calendar-theme-switching-is-handled-by-a-javafx-effect">Aspect: Calendar theme switching is handled by a JavaFX effect</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Calender theme swithing is handled by JavaFX effect</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simple to implement</p>
+</li>
+<li>
+<p>Cons: Potentially ugly and less flexible, as cannot configure the individual colours.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create another calendar CSS for the dark theme</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More flexible in choice of colors, resulting in more beautiful UI.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement, due to complexity of CSS stylesheet.</p>
+</li>
+<li>
+<p>Cons: Loses color consistency of simply inverting colors.</p>
+</li>
+<li>
+<p>Cons: Any future change in colors have to update two stylesheets.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="appointments-feature"><a class="link" href="#appointments-feature">3.9. Appointments feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.9.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The appointments feature allows the salesperson to add and edit appointments that he have with clients in the contact list. He can also view the appointments in a calendar.</p>
+</div>
+<div class="paragraph">
+<p>The edit appointment feature is interesting in that editing persons check whether the person is already in the appointment. If so, the person is removed. Otherwise, the person is added.
+This differs from the behaviour of editing tags of a person, which is destructive and overwrite all tags.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.9.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-editing-an-appointment-s-person-list-is-non-destructive"><a class="link" href="#aspect-editing-an-appointment-s-person-list-is-non-destructive">Aspect: Editing an appointment&#8217;s person list is non-destructive</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Editing an appointment&#8217;s person list adds the person if not present and removes the person otherwise.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Fits the usual use case of a person saying he is/is unable to make it for the appointment</p>
+</li>
+<li>
+<p>Cons: Cannot overwrite the person list with a new set of persons directly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Destructively edit the person list, replacing it with the new list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to overwrite the person list.</p>
+</li>
+<li>
+<p>Cons: Does not fit the expected use case</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-calendar-is-handled-by-an-external-library-calendarfx"><a class="link" href="#aspect-calendar-is-handled-by-an-external-library-calendarfx">Aspect: Calendar is handled by an external library, CalendarFX</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Calender is handled by external library, CalendarFX</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Less effort, make good use of existing code to reduce duplication of effort.</p>
+</li>
+<li>
+<p>Cons: Calendar is less customisable. Limited to what is already implemented.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create our own calendar</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More flexible terms of how the calendar will work</p>
+</li>
+<li>
+<p>Cons: More effort. Time could be used on other features.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="timezone-feature"><a class="link" href="#timezone-feature">3.10. TimeZone feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">3.10.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The time zone feature allows the sales person to add a time zone for their clients. This will allow for simplified appointment scheduling between the sales person and their international clients.</p>
 </div>
@@ -886,7 +1063,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.8.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.10.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-time-zone"><a class="link" href="#aspect-implementation-of-time-zone">Aspect: Implementation of time zone</a></h5>
 <div class="ulist">
@@ -923,16 +1100,16 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="email-feature"><a class="link" href="#email-feature">3.9. Email feature</a></h3>
+<h3 id="email-feature"><a class="link" href="#email-feature">3.11. Email feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-9"><a class="link" href="#current-implementation-9">3.9.1. Current Implementation</a></h4>
+<h4 id="current-implementation-11"><a class="link" href="#current-implementation-11">3.11.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The email feature allows the user to send emails in the app by typing their message in an email compose pop up box.
 The inbox feature allows the user to see a preview of the plain text emails that they have received right when they open the app. To view the message, the user clicks the message and an popup will appear with the full message.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.9.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.11.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-the-ui-of-the-inbox-panel"><a class="link" href="#aspect-the-ui-of-the-inbox-panel">Aspect: The UI of the inbox panel</a></h5>
 <div class="ulist">
@@ -969,9 +1146,9 @@ The inbox feature allows the user to see a preview of the plain text emails that
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.10. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.12. Undo/Redo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-10"><a class="link" href="#current-implementation-10">3.10.1. Current Implementation</a></h4>
+<h4 id="current-implementation-12"><a class="link" href="#current-implementation-12">3.12.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
@@ -1124,7 +1301,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.10.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.12.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-undoablecommand-code"><a class="link" href="#aspect-implementation-of-code-undoablecommand-code">Aspect: Implementation of <code>UndoableCommand</code></a></h5>
 <div class="ulist">
@@ -1261,20 +1438,20 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.11. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.13. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.12. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.14. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.13, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.15, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1305,7 +1482,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.13. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.15. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2321,7 +2498,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major</strong>: A calendar or appointment scheduling feature allows the salesperson to record down when he has appointments with his clients and to see at a glance his future appointments for the days/month ahead.</p>
+<p><strong>Major</strong>: A calendar or appointment scheduling feature that allows the salesperson to record down when he has appointments with his clients and to see at a glance his future appointments for the days/month ahead.</p>
 </li>
 <li>
 <p><strong>Minor</strong>: An archival feature for clients that the salesperson is no longer in contact with so that they do not clutter up the interface as the salesperson has to manage a lot of clients.</p>
@@ -2331,6 +2508,9 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
 <p><strong>Minor</strong>: Command alias feature so that user does not have to type long commands.</p>
+</li>
+<li>
+<p><strong>Minor</strong>: A loading screen for emails so that the app does not become unresponsive</p>
 </li>
 </ul>
 </div>
@@ -2856,7 +3036,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 05:03:48 UTC
+Last updated 2018-04-15 05:24:03 UTC
 </div>
 </div>
 </body>
