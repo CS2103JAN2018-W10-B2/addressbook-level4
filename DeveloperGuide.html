@@ -112,7 +112,15 @@
 <li><a href="#list-all-clients">H.7. List all clients</a></li>
 <li><a href="#unarchive-client">H.8. Unarchive client</a></li>
 <li><a href="#switch-theme">H.9. Switch theme</a></li>
-<li><a href="#saving-data">H.10. Saving data</a></li>
+<li><a href="#lock">H.10. Lock</a></li>
+<li><a href="#unlock">H.11. Unlock</a></li>
+<li><a href="#change-password">H.12. Change Password</a></li>
+<li><a href="#list-all-appointments">H.13. List all appointments</a></li>
+<li><a href="#sort-all-contacts">H.14. Sort all contacts</a></li>
+<li><a href="#remove-tags-from-all-contacts">H.15. Remove tags from all contacts</a></li>
+<li><a href="#export-all-contacts">H.16. Export all contacts</a></li>
+<li><a href="#add-comments-to-contacts">H.17. Add comments to contacts</a></li>
+<li><a href="#saving-data">H.18. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -3167,7 +3175,167 @@ Expected: Theme is saved across restarts.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.10. Saving data</a></h3>
+<h3 id="lock"><a class="link" href="#lock">H.10. Lock</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Lock the addressbook to prevent further modification on contacts or appointment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Run <code>lock</code> .<br>
+Expected: All the contacts and appointments are gone. And further commands are not accepted</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unlock"><a class="link" href="#unlock">H.11. Unlock</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Unlock the addressbook for further modification on contacts or appointment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: The addressbook is already locked.</p>
+</li>
+<li>
+<p>Test case: Run <code>unlock PASSWORD</code> .<br>
+Expected: The addressbook is unlock and starts to accept more commands. Please note that the contatcs and appointments will not be shown automatically, please use list and listappointment command to see.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="change-password"><a class="link" href="#change-password">H.12. Change Password</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change the lock password</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Run <code>setPassword OLD_PASSWORD NEW_PASSWORD</code> .<br>
+Expected: The password is changed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-all-appointments"><a class="link" href="#list-all-appointments">H.13. List all appointments</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Listing all appointments</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Run <code>listappointment</code> .<br>
+Expected: All the appointments are listed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-all-contacts"><a class="link" href="#sort-all-contacts">H.14. Sort all contacts</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sorting all contacts</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Run <code>sort</code> .<br>
+Expected: All the contacts in addressbook are sorted based on alphabetical order.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remove-tags-from-all-contacts"><a class="link" href="#remove-tags-from-all-contacts">H.15. Remove tags from all contacts</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Removing tags from all contatcs</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: There are already some tags in the addressbook.</p>
+</li>
+<li>
+<p>Test case: Run <code>removetag TAGNAME</code> .<br>
+Expected: The specified tag is removed from all the contacts in addressbook.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export-all-contacts"><a class="link" href="#export-all-contacts">H.16. Export all contacts</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Export all contatcs</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: There are already some contactss in the addressbook.</p>
+</li>
+<li>
+<p>Test case: Run <code>export</code> .<br>
+Expected: All the contacts in the addressbook are exported to a csv file.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-comments-to-contacts"><a class="link" href="#add-comments-to-contacts">H.17. Add comments to contacts</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add comments to contacts</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: There are already some contactss in the addressbook.</p>
+</li>
+<li>
+<p>Test case: Run <code>add n/David p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 tz/PST c/interested in football t/friends t/owesMoney</code> .<br>
+Expected: A contact is created with comment interested in football.</p>
+</li>
+<li>
+<p>Test case: Run <code>edit 1 c/interested in basketball</code> .<br>
+Expected: The first contact&#8217;s comment is modified to interested in basketball.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">H.18. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3191,7 +3359,7 @@ Expected: Theme is saved across restarts.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:41:17 UTC
+Last updated 2018-04-15 07:59:30 UTC
 </div>
 </div>
 </body>
