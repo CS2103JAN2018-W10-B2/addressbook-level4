@@ -120,7 +120,13 @@
 <li><a href="#remove-tags-from-all-contacts">H.15. Remove tags from all contacts</a></li>
 <li><a href="#export-all-contacts">H.16. Export all contacts</a></li>
 <li><a href="#add-comments-to-contacts">H.17. Add comments to contacts</a></li>
-<li><a href="#saving-data">H.18. Saving data</a></li>
+<li><a href="#incorrect-time-zones-are-rejected">H.18. Incorrect time zones are rejected</a></li>
+<li><a href="#send-an-email-to-a-client">H.19. Send an email to a client</a></li>
+<li><a href="#reply-to-an-client-email">H.20. Reply to an client email</a></li>
+<li><a href="#forward-a-client-email">H.21. Forward a client email</a></li>
+<li><a href="#load-all-client-emails">H.22. Load all client emails.</a></li>
+<li><a href="#receive-a-client-email">H.23. Receive a client email</a></li>
+<li><a href="#saving-data">H.24. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -2570,6 +2576,9 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p><strong>Minor</strong>: A time zone feature which allows the sales person to add the timezone details of their clients.</p>
 </li>
+<li>
+<p><strong>Minor</strong>: An enhancement that changes incorrect commands to red.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -3348,7 +3357,7 @@ Expected: All the contacts in the addressbook are exported to a csv file.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisite: There are already some contactss in the addressbook.</p>
+<p>Prerequisite: There are already some contacts in the addressbook.</p>
 </li>
 <li>
 <p>Test case: Run <code>add n/David p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 tz/PST c/interested in football t/friends t/owesMoney</code> .<br>
@@ -3365,7 +3374,165 @@ Expected: The first contact&#8217;s comment is modified to interested in basketb
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.18. Saving data</a></h3>
+<h3 id="incorrect-time-zones-are-rejected"><a class="link" href="#incorrect-time-zones-are-rejected">H.18. Incorrect time zones are rejected</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Time zone abbreviations unknown to Java are rejected</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: There is at least one contact in Sell IT</p>
+</li>
+<li>
+<p>Test case: Run <code>add n/David p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 tz/PST c/interested in football t/friends</code> .<br>
+Expected: A contact is created with the time zone PST is created.</p>
+</li>
+<li>
+<p>Test case: Run <code>edit 1 tz/PST</code> .+
+Expected: The client with index 1 has their time zone changed to PST</p>
+</li>
+<li>
+<p>Test case: Run <code>add n/David p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 tz/ c/interested in football t/friends</code> .<br>
+Expected: Error message: <code>Time zones should be have the standard time zone abbreviations, and should not be blank</code>.</p>
+</li>
+<li>
+<p>Test case: Run <code>edit 1 tz/P$T</code> .<br>
+Expected: Error message: <code>Time zones should be have the standard time zone abbreviations, and should not be blank</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="send-an-email-to-a-client"><a class="link" href="#send-an-email-to-a-client">H.19. Send an email to a client</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Send an email to a client</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: There is at least one email in Sell IT</p>
+</li>
+<li>
+<p>Test case: Click a client&#8217;s email in the person panel and enter a subject and the email message body and click the send button.<br>
+Expected: Email sent successfully window.</p>
+</li>
+<li>
+<p>Test case: Click the new email button after clicking an email in the inbox and do not enter any recipients and click the send button.<br>
+Expected: Could not send email due to an error window.</p>
+</li>
+<li>
+<p>Test case: Click the new email button after clicking an email in the inbox and enter <code>abcde</code> as the recipient and click the send button.<br>
+Expected: Could not send email due to an error window.</p>
+</li>
+<li>
+<p>Test case: Click the new email button after clicking an email in the inbox and enter <code>@gmail.com</code> as the recipient and click the send button.<br>
+Expected: Could not send email due to an error window.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reply-to-an-client-email"><a class="link" href="#reply-to-an-client-email">H.20. Reply to an client email</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Reply to an email an email received from a client</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: There is at least one email in Sell IT.</p>
+</li>
+<li>
+<p>Test case: Click the reply button after clicking an email in the inbox and type some text in the email body.<br>
+Expected: Email sent successfully window.</p>
+</li>
+<li>
+<p>Test case: Click the reply button after clicking an email in the inbox and add an invalid recipient such as <code>asdf</code>.<br>
+Expected: Could not send email due to an error window.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="forward-a-client-email"><a class="link" href="#forward-a-client-email">H.21. Forward a client email</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Forward an email received from a client</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: There is at least one contact or email in Sell IT</p>
+</li>
+<li>
+<p>Test case: Click the forward button after clicking an email in the inbox and enter a valid email and click send<br>
+Expected: Email sent successfully window.</p>
+</li>
+<li>
+<p>Test case: Click the forward button after clicking an email in the inbox and enter an invalid recipient such as <code>asdf</code>.<br>
+Expected: Could not send email due to an error window.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="load-all-client-emails"><a class="link" href="#load-all-client-emails">H.22. Load all client emails.</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Load all client emails.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: There is at least one email message received in Sell IT</p>
+</li>
+<li>
+<p>Test case: See which emails are loaded onto the email panel. On a browser, log onto the gmail with the email "<a href="mailto:sg.salesperson@gmail.com">sg.salesperson@gmail.com</a>" and password "gloriacs2103" and verify they are the same.<br>
+Expected: Email inbox should be the same as what is shown on gmail.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="receive-a-client-email"><a class="link" href="#receive-a-client-email">H.23. Receive a client email</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Receive an email from a client.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: None</p>
+</li>
+<li>
+<p>Test case: From an email you have access to, send an plain text email to "<a href="mailto:sg.salesperson@gmail.com">sg.salesperson@gmail.com</a>".<br>
+Expected: Email appears on the email panel within 30 seconds and the full view is opened in a pop up when clicked.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">H.24. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3389,7 +3556,7 @@ Expected: The first contact&#8217;s comment is modified to interested in basketb
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 13:20:53 UTC
+Last updated 2018-04-15 13:21:16 UTC
 </div>
 </div>
 </body>
