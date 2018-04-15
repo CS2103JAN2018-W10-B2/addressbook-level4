@@ -47,8 +47,8 @@
 <li><a href="#login-logout-reset-password-feature">3.1. Login/logout &amp; reset password feature</a></li>
 <li><a href="#sortcommand-feature">3.2. SortCommand feature</a></li>
 <li><a href="#exportcommand-feature">3.3. ExportCommand feature</a></li>
-<li><a href="#deletetag-feature">3.4. DeleteTag feature</a></li>
-<li><a href="#totalpersonstatusbar-feature">3.5. TotalPersonStatusBar feature</a></li>
+<li><a href="#listappointment-feature">3.4. ListAppointment feature</a></li>
+<li><a href="#deletetag-feature">3.5. DeleteTag feature</a></li>
 <li><a href="#addcomment-feature">3.6. AddComment feature</a></li>
 <li><a href="#archive-feature">3.7. Archive feature</a></li>
 <li><a href="#timezone-feature">3.8. TimeZone feature</a></li>
@@ -665,9 +665,27 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="deletetag-feature"><a class="link" href="#deletetag-feature">3.4. DeleteTag feature</a></h3>
+<h3 id="listappointment-feature"><a class="link" href="#listappointment-feature">3.4. ListAppointment feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The listappointment command feature allows the sales person to list all the appointments in his addressbook. This will allow for a more simple way to fina an appointment.</p>
+</div>
+<div class="paragraph">
+<p>To list the appointment in the adress book, simply type 'listappointment' or the command alias 'lap'.</p>
+</div>
+<div class="paragraph">
+<p>An example of the sort command would be: listappointment</p>
+</div>
+<div class="paragraph">
+<p>An example of the sort command alias would be: lap</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deletetag-feature"><a class="link" href="#deletetag-feature">3.5. DeleteTag feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The delete tag command allows user to remove a particular tag from all persons in the AddressBook. For example, he may want to delete the tag "neigbour" from all his contacts if he is no longer staying at the place.</p>
 </div>
@@ -712,15 +730,6 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </li>
 </ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="totalpersonstatusbar-feature"><a class="link" href="#totalpersonstatusbar-feature">3.5. TotalPersonStatusBar feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
-<div class="paragraph">
-<p>This feature will allow user to see how many contacts he or she has in his/her address book in a straight way, so that I can call it straightforward when I need the information.</p>
 </div>
 </div>
 </div>
@@ -2847,7 +2856,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 04:23:59 UTC
+Last updated 2018-04-15 04:27:39 UTC
 </div>
 </div>
 </body>
