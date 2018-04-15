@@ -105,7 +105,14 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#add-appointment">H.3. Add appointment</a></li>
+<li><a href="#delete-appointment">H.4. Delete appointment</a></li>
+<li><a href="#edit-appointment">H.5. Edit appointment</a></li>
+<li><a href="#archive-client">H.6. Archive client</a></li>
+<li><a href="#list-all-clients">H.7. List all clients</a></li>
+<li><a href="#unarchive-client">H.8. Unarchive client</a></li>
+<li><a href="#switch-theme">H.9. Switch theme</a></li>
+<li><a href="#saving-data">H.10. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -3012,7 +3019,155 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
+<h3 id="add-appointment"><a class="link" href="#add-appointment">H.3. Add appointment</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding an appointment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Run <code>addappointment</code> with valid parameters.<br>
+Expected: Appointment added.</p>
+</li>
+<li>
+<p>Test case: Run <code>addappointment</code> with invalid parameters.<br>
+Expected: Error message displayed showing the required format.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-appointment"><a class="link" href="#delete-appointment">H.4. Delete appointment</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting an appointment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Run <code>deleteappointment 1</code><br>
+Expected: The first appointment is deleted</p>
+</li>
+<li>
+<p>Test case: Run <code>deleteappointment InvalidIndex</code><br>
+Expected: Error message displayed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-appointment"><a class="link" href="#edit-appointment">H.5. Edit appointment</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing an appointment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Run <code>editappointment</code> with valid parameters.<br>
+Expected: Appointment edited.</p>
+</li>
+<li>
+<p>Test case: Run <code>editappointment</code> without any edit information.<br>
+Expected: Error message displayed.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="archive-client"><a class="link" href="#archive-client">H.6. Archive client</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Archiving a client</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Run <code>archive INDEX</code> where INDEX is a valid person index.<br>
+Expected: Person disappears from list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-all-clients"><a class="link" href="#list-all-clients">H.7. List all clients</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Listing all clients including archived</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: Archive some client as in the archive client test.</p>
+</li>
+<li>
+<p>Test case: Run <code>listall</code> .<br>
+Expected: Archived person is listed with red font and strikethrough.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unarchive-client"><a class="link" href="#unarchive-client">H.8. Unarchive client</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Unarchiving a client</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: Some person archived and listed as in List all clients test.</p>
+</li>
+<li>
+<p>Test case: Run <code>unarchive INDEX</code> where INDEX is the index of an archived person.<br>
+Expected: Person becomes unarchived and is listed in a normal font.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switch-theme"><a class="link" href="#switch-theme">H.9. Switch theme</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Switching theme</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: Run <code>switch</code> .<br>
+Expected: Theme is switched from dark to light and vice-versa.</p>
+</li>
+<li>
+<p>Test case: Close and open the application.<br>
+Expected: Theme is saved across restarts.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">H.10. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3036,7 +3191,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 06:22:00 UTC
+Last updated 2018-04-15 07:29:51 UTC
 </div>
 </div>
 </body>
