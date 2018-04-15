@@ -85,6 +85,12 @@
 <li>
 <p>Added Travis support on Github</p>
 </li>
+<li>
+<p>Updates screenshot on readme</p>
+</li>
+<li>
+<p>Adds Coverall support and updated badge</p>
+</li>
 </ul>
 </div>
 </li>
@@ -326,21 +332,31 @@ Format: <code>switch</code></p>
 <p>Pros: Uses less space than the alternative.</p>
 </li>
 <li>
-<p>Cons: Harder to implement, more changes have to be made to existing codebase.
-=== Switch theme feature
-==== Current Implementation
-image::SwitchSequenceDiagram.png[width="800"]
-The switch theme feature allows the salesperson to switch between dark and light thenmes as he might have to work under different lighting conditions. The theme that is in used persists across restarts</p>
+<p>Cons: Harder to implement, more changes have to be made to existing codebase.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switch-theme-feature"><a class="link" href="#switch-theme-feature">Switch theme feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SwitchSequenceDiagram.png" alt="SwitchSequenceDiagram" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>The switch theme feature allows the salesperson to switch between dark and light thenmes as he might have to work under different lighting conditions. The theme that is in used persists across restarts</p>
 </div>
 <div class="paragraph">
 <p>See sequence diagram. The archival feature is implemented by triggering an <code>SwitchThemeRequestEvent()</code> which is then handled in <code>MainWindow</code>.
 The theme switching in done in two ways. For the main window, it is done by changing the CSS stylesheet used. For the calendar, because the stylesheet is complicated and is provided by an external library, we use a JavaFX effect to invert all colors.</p>
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -409,20 +425,26 @@ The theme switching in done in two ways. For the main window, it is done by chan
 <p>Cons: Loses color consistency of simply inverting colors.</p>
 </li>
 <li>
-<p>Cons: Any future change in colors have to update two stylesheets.
-=== Appointments feature
-==== Current Implementation
-The appointments feature allows the salesperson to add and edit appointments that he have with clients in the contact list. He can also view the appointments in a calendar.</p>
+<p>Cons: Any future change in colors have to update two stylesheets.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="appointments-feature"><a class="link" href="#appointments-feature">Appointments feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The appointments feature allows the salesperson to add and edit appointments that he have with clients in the contact list. He can also view the appointments in a calendar.</p>
 </div>
 <div class="paragraph">
 <p>The edit appointment feature is interesting in that editing persons check whether the person is already in the appointment. If so, the person is removed. Otherwise, the person is added.
 This differs from the behaviour of editing tags of a person, which is destructive and overwrite all tags.</p>
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -500,7 +522,7 @@ This differs from the behaviour of editing tags of a person, which is destructiv
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 05:24:03 UTC
+Last updated 2018-04-15 05:43:41 UTC
 </div>
 </div>
 </body>
